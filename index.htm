@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laura Reynol — Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Pinyon+Script&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --papel:#F4EDE0;
+  --papel-2:#EADFCB;
+  --papel-3:#E0D2B8;
+  --tinta:#16257E;
+  --eletrico:#2E42D8;
+  --abissal:#07103F;
+  --profundo:#0E1E86;
+  --laranja:#E4531B;
+  --laranja-2:#F5913C;
+  --grafite:#241F1A;
+  --creme:#FBF6EC;
+
+  --display:"Bodoni Moda",serif;
+  --script:"Pinyon Script",cursive;
+  --corpo:"Instrument Sans",system-ui,sans-serif;
+  --mono:"Space Mono",monospace;
+
+  --gutter:clamp(20px,5vw,72px);
+  --maxw:1180px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--papel);
+  color:var(--grafite);
+  font-family:var(--corpo);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* grão de papel por cima de tudo */
+.grao{
+  position:fixed;inset:0;pointer-events:none;z-index:90;
+  opacity:.5;mix-blend-mode:multiply;
+}
+.grao svg{width:100%;height:100%}
+
+::selection{background:var(--laranja);color:var(--creme)}
+:focus-visible{outline:2px dashed var(--laranja);outline-offset:4px;border-radius:2px}
+
+/* ============ UTIL ============ */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.rev{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rev.on{opacity:1;transform:none}
+
+/* halftone */
+.halftone{
+  position:absolute;pointer-events:none;
+  background-image:radial-gradient(circle,var(--eletrico) 1.3px,transparent 1.6px);
+  background-size:9px 9px;opacity:.5;
+}
+
+/* ============ TOPO ============ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:12px var(--gutter);
+  background:rgba(244,237,224,.82);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(22,37,126,.16);
+  transform:translateY(-105%);transition:transform .45s ease;
+}
+.topbar.on{transform:none}
+.topbar .marca{font-family:var(--display);font-style:italic;font-size:17px;color:var(--tinta);letter-spacing:.01em}
+.topbar nav{display:flex;gap:18px;flex-wrap:wrap}
+.topbar nav a{color:var(--tinta);text-decoration:none;opacity:.72}
+.topbar nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:720px){.topbar nav{display:none}}
+
+/* ============ CAPA ============ */
+.capa{
+  position:relative;min-height:100svh;
+  padding:96px 0 60px;
+  display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;
+}
+.capa .halftone.a{inset:0 auto auto -40px;width:340px;height:520px;
+  -webkit-mask-image:linear-gradient(115deg,#000,transparent 72%);
+  mask-image:linear-gradient(115deg,#000,transparent 72%)}
+.capa .halftone.b{right:-30px;bottom:0;width:300px;height:340px;
+  -webkit-mask-image:linear-gradient(-60deg,#000,transparent 70%);
+  mask-image:linear-gradient(-60deg,#000,transparent 70%)}
+
+.capa-topo{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  color:var(--tinta);margin-bottom:clamp(24px,6vh,70px)}
+.capa-topo .mono{opacity:.85}
+
+.titulo{position:relative;text-align:center;line-height:.78}
+.titulo .l1,.titulo .l2{
+  display:block;font-family:var(--display);font-style:italic;font-weight:500;
+  color:var(--eletrico);mix-blend-mode:multiply;
+  font-size:clamp(76px,20vw,250px);letter-spacing:-.02em;
+}
+.titulo .l1{margin-left:-2vw}
+.titulo .l2{margin-top:-.16em;margin-left:8vw}
+.titulo .l2 em{font-weight:700}
+.subtitulo{
+  display:block;text-align:center;margin-top:14px;
+  font-family:var(--display);font-style:italic;font-size:clamp(18px,2.6vw,30px);
+  color:var(--tinta);
+}
+.selo-ver{
+  position:absolute;top:-6%;right:2%;
+  font-family:var(--mono);font-size:12px;letter-spacing:.2em;
+  color:var(--laranja);border:1px solid var(--laranja);
+  padding:5px 9px;transform:rotate(4deg);background:rgba(251,246,236,.6)
+}
+.capa-rodape{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
+  margin-top:clamp(30px,8vh,84px);color:var(--tinta)
+}
+.assina{font-family:var(--script);font-size:clamp(34px,6vw,60px);color:var(--tinta);line-height:1}
+.rolar{display:flex;align-items:center;gap:10px}
+.rolar .linha{width:52px;height:1px;background:var(--tinta);transform-origin:left;animation:puxa 2.4s ease-in-out infinite}
+@keyframes puxa{0%,100%{transform:scaleX(.35)}50%{transform:scaleX(1)}}
+
+/* traço de tinta desenhado */
+.swash{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:min(112%,1180px);pointer-events:none;z-index:-1;opacity:.55}
+.swash path{fill:none;stroke:var(--eletrico);stroke-width:1.6;stroke-linecap:round;
+  stroke-dasharray:2600;stroke-dashoffset:2600;animation:desenha 3.6s ease-out .3s forwards}
+@keyframes desenha{to{stroke-dashoffset:0}}
+
+/* peixes */
+.koi{position:absolute;pointer-events:none;z-index:2;filter:drop-shadow(0 10px 18px rgba(22,37,126,.14))}
+.koi svg{width:100%;height:auto}
+.koi-1{width:clamp(120px,17vw,230px);top:9%;right:6%;animation:nada1 26s ease-in-out infinite}
+.koi-2{width:clamp(80px,11vw,150px);top:63%;left:3%;transform:scaleX(-1);animation:nada2 22s ease-in-out infinite}
+.koi-3{width:clamp(90px,12vw,168px);bottom:6%;right:16%;animation:nada3 30s ease-in-out infinite}
+@keyframes nada1{0%,100%{transform:translate(0,0) rotate(-6deg)}50%{transform:translate(-34px,26px) rotate(4deg)}}
+@keyframes nada2{0%,100%{transform:scaleX(-1) translate(0,0) rotate(4deg)}50%{transform:scaleX(-1) translate(26px,-22px) rotate(-5deg)}}
+@keyframes nada3{0%,100%{transform:translate(0,0) rotate(8deg)}50%{transform:translate(22px,-30px) rotate(-3deg)}}
+
+/* estrelinhas */
+.faisca{position:absolute;pointer-events:none;fill:var(--laranja);animation:pisca 4s ease-in-out infinite}
+@keyframes pisca{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+
+/* ============ SOBRE ============ */
+.sobre{position:relative;padding:clamp(70px,12vh,130px) 0;overflow:hidden}
+.sobre .halftone.c{right:-60px;top:8%;width:260px;height:300px;
+  -webkit-mask-image:radial-gradient(circle at 70% 30%,#000,transparent 72%);
+  mask-image:radial-gradient(circle at 70% 30%,#000,transparent 72%)}
+.eyebrow{color:var(--eletrico);margin:0 0 22px}
+.sobre-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:start}
+@media(max-width:860px){.sobre-grid{grid-template-columns:1fr}}
+.nome-script{font-family:var(--script);font-size:clamp(52px,9vw,104px);color:var(--tinta);line-height:.9;margin:0}
+.nome-tag{font-family:var(--display);font-style:italic;font-size:19px;color:var(--laranja);margin:6px 0 20px;display:block}
+.bio{max-width:52ch;font-size:16.5px}
+.bio p{margin:0 0 14px}
+
+/* polaroid */
+.polaroid{position:relative;background:var(--creme);padding:14px 14px 62px;
+  box-shadow:0 22px 44px rgba(22,37,126,.16);transform:rotate(2.4deg);max-width:340px;margin-left:auto}
+.polaroid .foto{aspect-ratio:4/5;background:
+   radial-gradient(120% 90% at 30% 15%,rgba(255,255,255,.5),transparent 60%),
+   linear-gradient(150deg,var(--eletrico),var(--profundo) 55%,var(--abissal));
+  position:relative;overflow:hidden;display:grid;place-items:center}
+.polaroid .foto::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(251,246,236,.55) 1.1px,transparent 1.4px);background-size:7px 7px;opacity:.45}
+.polaroid .foto span{position:relative;z-index:2;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  color:rgba(251,246,236,.9);text-align:center;padding:0 18px;line-height:1.9}
+.polaroid .legenda{position:absolute;left:0;right:0;bottom:16px;text-align:center;
+  font-family:var(--script);font-size:26px;color:var(--tinta)}
+.fita{position:absolute;width:118px;height:30px;background:rgba(245,145,60,.34);
+  border-left:1px dashed rgba(228,83,27,.35);border-right:1px dashed rgba(228,83,27,.35)}
+.fita.t1{top:-14px;left:-24px;transform:rotate(-28deg)}
+.fita.t2{bottom:-12px;right:-26px;transform:rotate(-24deg)}
+
+/* dados */
+.dados{margin-top:clamp(44px,7vh,80px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,54px)}
+@media(max-width:860px){.dados{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.dados{grid-template-columns:1fr}}
+.dados h3{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--eletrico);margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid rgba(22,37,126,.24)}
+.item{margin-bottom:16px}
+.item b{display:block;font-weight:600;font-size:15px;color:var(--tinta)}
+.item i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--laranja)}
+.item span{display:block;font-size:14px;opacity:.78}
+
+.ferramentas{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ferramentas b{
+  width:52px;height:52px;display:grid;place-items:center;border-radius:12px;
+  background:linear-gradient(155deg,var(--laranja-2),var(--laranja));
+  color:var(--creme);font-family:var(--display);font-weight:700;font-size:19px;
+  box-shadow:0 8px 16px rgba(228,83,27,.24)
+}
+.ferramentas b.frio{background:linear-gradient(155deg,var(--eletrico),var(--tinta));box-shadow:0 8px 16px rgba(22,37,126,.24)}
+
+/* ============ ÍNDICE (mergulho) ============ */
+.indice{position:relative;padding:clamp(90px,16vh,170px) 0 clamp(80px,14vh,150px);overflow:hidden;
+  background:linear-gradient(180deg,var(--eletrico) 0%,var(--profundo) 46%,var(--abissal) 100%);
+  color:var(--creme)}
+.indice::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:70%;
+  background:repeating-linear-gradient(102deg,rgba(255,255,255,.11) 0 26px,transparent 26px 96px);
+  filter:blur(14px);animation:raio 14s ease-in-out infinite}
+@keyframes raio{0%,100%{transform:translateX(-2%) skewX(0deg);opacity:.7}50%{transform:translateX(3%) skewX(2deg);opacity:1}}
+.indice::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(251,246,236,.28) 1px,transparent 1.3px);background-size:14px 14px;opacity:.3}
+.indice .wrap{position:relative;z-index:3}
+.indice-cabeca{font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:clamp(60px,14vw,168px);line-height:.82;margin:0 0 clamp(30px,6vh,58px);color:var(--creme)}
+.indice-cabeca small{display:block;font-family:var(--mono);font-style:normal;font-size:11px;
+  letter-spacing:.26em;opacity:.7;margin-bottom:18px}
+.sumario{list-style:none;margin:0;padding:0;max-width:720px;margin-left:auto}
+.sumario li{border-top:1px solid rgba(251,246,236,.24)}
+.sumario li:last-child{border-bottom:1px solid rgba(251,246,236,.24)}
+.sumario a{display:flex;align-items:baseline;gap:16px;padding:15px 4px;text-decoration:none;
+  transition:padding .35s ease,background .35s ease}
+.sumario a:hover,.sumario a:focus-visible{padding-left:18px;background:rgba(251,246,236,.07)}
+.sumario .num{font-family:var(--mono);font-size:12px;letter-spacing:.14em;opacity:.65;min-width:30px}
+.sumario .tit{font-family:var(--display);font-style:italic;font-size:clamp(24px,4.4vw,42px);line-height:1.1}
+.sumario .seta{margin-left:auto;font-family:var(--mono);font-size:13px;opacity:0;transform:translateX(-8px);transition:.35s}
+.sumario a:hover .seta,.sumario a:focus-visible .seta{opacity:.8;transform:none}
+.bolha{position:absolute;border-radius:50%;border:1px solid rgba(251,246,236,.4);
+  background:rgba(251,246,236,.07);animation:sobe linear infinite}
+@keyframes sobe{0%{transform:translateY(0) scale(.7);opacity:0}
+  15%{opacity:.8}100%{transform:translateY(-70vh) scale(1.1);opacity:0}}
+
+/* ============ PROJETOS ============ */
+.projetos{padding:clamp(70px,11vh,120px) 0 0}
+.proj{position:relative;padding:clamp(48px,9vh,96px) 0;border-top:1px solid rgba(22,37,126,.18)}
+.projetos .proj:first-child{border-top:0}
+.proj-cabeca{display:flex;align-items:flex-end;gap:clamp(14px,3vw,34px);flex-wrap:wrap;margin-bottom:8px}
+.proj-num{font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:clamp(52px,10vw,120px);line-height:.8;color:var(--laranja);opacity:.92}
+.proj-cat{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--eletrico);padding-bottom:10px}
+.proj-tit{font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:clamp(30px,5.6vw,60px);line-height:1.02;color:var(--tinta);margin:0 0 16px}
+.proj-corpo{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(26px,4.5vw,64px);align-items:start}
+@media(max-width:860px){.proj-corpo{grid-template-columns:1fr}}
+.proj-texto p{margin:0 0 14px;max-width:46ch}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.tags span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(22,37,126,.35);color:var(--tinta);padding:5px 10px;border-radius:100px}
+.ficticio{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--laranja);margin-bottom:14px}
+.ficticio::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--laranja)}
+
+/* moldura de amostra */
+.mostra{position:relative;background:var(--creme);border:1px dashed rgba(22,37,126,.34);
+  padding:clamp(16px,3vw,30px);box-shadow:0 18px 40px rgba(22,37,126,.09)}
+.mostra .cap{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(36,31,26,.45);margin-top:14px;display:block}
+
+/* — amostra 01: identidade */
+.id-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:14px}
+.id-logo{background:var(--papel-2);aspect-ratio:16/10;display:grid;place-items:center;position:relative;overflow:hidden}
+.id-logo .marca-l{font-family:var(--display);font-weight:700;font-size:clamp(26px,4.6vw,52px);
+  color:var(--tinta);letter-spacing:-.03em;line-height:.9;text-align:center}
+.id-logo .marca-l em{display:block;font-family:var(--mono);font-style:normal;font-size:9.5px;
+  letter-spacing:.42em;color:var(--laranja);margin-top:10px}
+.disco{position:absolute;right:-40px;bottom:-40px;width:150px;height:150px;border-radius:50%;
+  background:repeating-radial-gradient(circle,rgba(22,37,126,.16) 0 2px,transparent 2px 6px);
+  border:1px solid rgba(22,37,126,.2)}
+.chips{display:grid;grid-template-rows:repeat(4,1fr);gap:8px}
+.chips i{display:block;border-radius:3px}
+.c1{background:var(--tinta)}.c2{background:var(--laranja)}.c3{background:var(--papel-3)}.c4{background:var(--grafite)}
+
+/* — amostra 02: embalagem */
+.pack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end}
+.frasco{aspect-ratio:3/5;border-radius:8px 8px 5px 5px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#dfe6d8,#c3d2bd)}
+.frasco:nth-child(2){aspect-ratio:3/4.2;background:linear-gradient(160deg,#f0dcc8,#dcbf9f)}
+.frasco:nth-child(3){aspect-ratio:3/4.6;background:linear-gradient(160deg,#d8dcf0,#b6bfe4)}
+.frasco::before{content:"";position:absolute;left:50%;top:-9%;transform:translateX(-50%);
+  width:34%;height:16%;border-radius:4px;background:rgba(36,31,26,.35)}
+.rotulo{position:absolute;left:8%;right:8%;top:28%;background:var(--creme);padding:10px 6px;text-align:center;
+  box-shadow:0 3px 8px rgba(0,0,0,.08)}
+.rotulo b{display:block;font-family:var(--display);font-style:italic;font-size:15px;color:var(--tinta);line-height:1}
+.rotulo i{display:block;font-family:var(--mono);font-style:normal;font-size:7.5px;letter-spacing:.18em;
+  color:var(--laranja);margin-top:5px}
+
+/* — amostra 03: editorial */
+.spread{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(22,37,126,.2);aspect-ratio:16/10}
+.pag{background:var(--papel);padding:clamp(10px,2vw,20px);display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.pag .h{font-family:var(--display);font-style:italic;font-size:clamp(16px,3vw,30px);color:var(--tinta);line-height:.95}
+.pag .col{columns:2;column-gap:9px}
+.pag .lin{height:4px;background:rgba(36,31,26,.16);border-radius:2px;margin-bottom:6px}
+.pag .lin.curta{width:56%}
+.pag .foto{flex:1;background:linear-gradient(160deg,var(--eletrico),var(--abissal));min-height:70px;position:relative;overflow:hidden}
+.pag .foto::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(251,246,236,.4) 1px,transparent 1.2px);background-size:6px 6px;opacity:.5}
+
+/* — amostra 04: UI */
+.telas{display:flex;gap:16px;justify-content:center;align-items:flex-end;flex-wrap:wrap}
+.fone{width:min(178px,42%);aspect-ratio:9/18.5;border-radius:26px;background:var(--grafite);padding:7px;
+  box-shadow:0 18px 34px rgba(22,37,126,.2)}
+.fone .tela{height:100%;border-radius:20px;background:var(--creme);padding:14px 11px;
+  display:flex;flex-direction:column;gap:9px;overflow:hidden}
+.fone.b{transform:translateY(-22px)}
+.fone.b .tela{background:linear-gradient(175deg,var(--eletrico),var(--profundo))}
+.ui-t{font-family:var(--display);font-style:italic;font-size:16px;color:var(--tinta);line-height:1}
+.fone.b .ui-t{color:var(--creme)}
+.onda{height:34px;display:flex;align-items:center;gap:2.5px}
+.onda i{flex:1;background:var(--laranja);border-radius:2px;animation:ondula 1.6s ease-in-out infinite}
+.fone.b .onda i{background:rgba(251,246,236,.85)}
+@keyframes ondula{0%,100%{height:22%}50%{height:100%}}
+.pill{height:9px;border-radius:5px;background:rgba(22,37,126,.14)}
+.pill.o{background:rgba(228,83,27,.35);width:60%}
+.card-ave{background:var(--papel-2);border-radius:10px;padding:9px;display:flex;gap:8px;align-items:center}
+.card-ave .bo{width:26px;height:26px;border-radius:50%;background:linear-gradient(150deg,var(--laranja-2),var(--laranja));flex:none}
+.card-ave .tx{flex:1}
+.card-ave .tx .l{height:5px;background:rgba(22,37,126,.2);border-radius:3px;margin-bottom:4px}
+.card-ave .tx .l.s{width:52%}
+.fone.b .card-ave{background:rgba(251,246,236,.14)}
+.fone.b .card-ave .tx .l{background:rgba(251,246,236,.45)}
+
+/* — amostra 05: ilustração */
+.bestiario{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:520px){.bestiario{grid-template-columns:repeat(2,1fr)}}
+.quadro{aspect-ratio:1;background:var(--papel-2);display:grid;place-items:center;position:relative;overflow:hidden;
+  border:1px solid rgba(22,37,126,.16)}
+.quadro::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(22,37,126,.22) 1px,transparent 1.2px);background-size:7px 7px;
+  -webkit-mask-image:linear-gradient(160deg,#000,transparent 68%);mask-image:linear-gradient(160deg,#000,transparent 68%)}
+.quadro svg{width:56%;height:auto;position:relative;z-index:2}
+.quadro:nth-child(2),.quadro:nth-child(6){background:linear-gradient(160deg,var(--eletrico),var(--profundo))}
+.quadro:nth-child(4){background:linear-gradient(160deg,var(--laranja-2),var(--laranja))}
+
+/* — amostra 06: tipografia */
+.espec{background:var(--papel-2);padding:clamp(18px,3.4vw,40px);text-align:center}
+.espec .glifos{font-family:var(--display);font-weight:600;color:var(--tinta);
+  font-size:clamp(56px,14vw,132px);line-height:.9;letter-spacing:.02em}
+.espec .glifos em{font-style:italic;color:var(--laranja)}
+.espec .alfabeto{font-family:var(--display);font-size:clamp(11px,2vw,17px);letter-spacing:.14em;
+  color:rgba(36,31,26,.62);margin-top:16px;word-break:break-word}
+.espec .pesos{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px;
+  border-top:1px solid rgba(22,37,126,.2);padding-top:14px}
+.espec .pesos span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--eletrico)}
+
+/* ============ INTERLÚDIO ============ */
+.interludio{position:relative;overflow:hidden;margin:clamp(40px,8vh,90px) 0;
+  background:linear-gradient(160deg,var(--eletrico),var(--abissal));color:var(--creme);
+  padding:clamp(56px,11vh,110px) 0;text-align:center}
+.interludio::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(251,246,236,.26) 1px,transparent 1.3px);background-size:13px 13px;opacity:.28}
+.interludio blockquote{position:relative;z-index:2;margin:0 auto;max-width:24ch;
+  font-family:var(--display);font-style:italic;font-size:clamp(26px,5.4vw,54px);line-height:1.12}
+.interludio cite{position:relative;z-index:2;display:block;margin-top:22px;font-style:normal;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.72}
+
+/* ============ CONTATO ============ */
+.contato{position:relative;overflow:hidden;color:var(--creme);
+  background:linear-gradient(180deg,var(--abissal),var(--profundo) 60%,var(--eletrico));
+  padding:clamp(80px,15vh,150px) 0 clamp(40px,7vh,70px)}
+.contato::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(251,246,236,.24) 1px,transparent 1.3px);background-size:15px 15px;opacity:.26}
+.contato .wrap{position:relative;z-index:3}
+.contato h2{font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:clamp(42px,9.5vw,120px);line-height:.9;margin:0 0 26px}
+.contato p{max-width:44ch;opacity:.85;margin:0 0 34px}
+.links{display:flex;gap:clamp(16px,4vw,44px);flex-wrap:wrap;
+  border-top:1px solid rgba(251,246,236,.26);padding-top:26px}
+.links a{text-decoration:none;display:block}
+.links a .rot{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.6}
+.links a .val{font-family:var(--display);font-style:italic;font-size:clamp(18px,2.6vw,26px);
+  border-bottom:1px solid transparent;transition:border-color .3s}
+.links a:hover .val{border-bottom-color:var(--laranja-2)}
+.rodape{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-top:clamp(50px,9vh,96px);opacity:.6;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .rev{opacity:1;transform:none}
+  .swash path{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<!-- grão -->
+<div class="grao" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#n)" opacity=".26"/></svg>
+</div>
+
+<!-- defs reutilizáveis -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <defs>
+    <linearGradient id="gkoi" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F7A24E"/><stop offset="55%" stop-color="#E4531B"/><stop offset="100%" stop-color="#C4380D"/>
+    </linearGradient>
+    <symbol id="koi" viewBox="0 0 200 120">
+      <path d="M62 60 C70 30 108 17 140 21 C171 25 189 41 195 60 C189 79 171 95 140 99 C108 103 70 90 62 60 Z" fill="url(#gkoi)"/>
+      <path d="M62 60 C48 41 26 23 7 15 C13 35 20 50 30 60 C20 70 13 85 7 105 C26 97 48 79 62 60 Z" fill="url(#gkoi)" opacity=".82"/>
+      <path d="M120 93 C125 108 138 116 153 113 C147 103 138 96 128 92 Z" fill="url(#gkoi)" opacity=".7"/>
+      <path d="M112 25 C118 11 132 4 147 6 C139 15 130 21 124 27 Z" fill="url(#gkoi)" opacity=".7"/>
+      <ellipse cx="106" cy="50" rx="17" ry="11" fill="#FBF6EC" opacity=".72"/>
+      <ellipse cx="152" cy="72" rx="12" ry="8" fill="#FBF6EC" opacity=".62"/>
+      <circle cx="177" cy="52" r="3.4" fill="#241F1A"/>
+    </symbol>
+    <symbol id="faisca" viewBox="0 0 24 24">
+      <path d="M12 0 C13.2 8.4 15.6 10.8 24 12 C15.6 13.2 13.2 15.6 12 24 C10.8 15.6 8.4 13.2 0 12 C8.4 10.8 10.8 8.4 12 0 Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="topbar" id="topbar">
+  <span class="marca">Laura Reynol</span>
+  <nav aria-label="Seções">
+    <a href="#sobre">Sobre</a>
+    <a href="#indice">Índice</a>
+    <a href="#p01">Trabalhos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ CAPA ============ -->
+<section class="capa" aria-label="Capa">
+  <div class="halftone a" aria-hidden="true"></div>
+  <div class="halftone b" aria-hidden="true"></div>
+
+  <svg class="swash" viewBox="0 0 1200 420" aria-hidden="true">
+    <path d="M40 300 C180 120 340 90 470 180 C560 242 520 340 430 336 C350 332 340 250 420 208 C540 145 760 168 900 240 C1010 296 1090 300 1160 246"/>
+    <path d="M120 344 C300 262 520 250 700 292 C840 324 980 330 1120 300"/>
+  </svg>
+
+  <div class="koi koi-1" aria-hidden="true"><svg viewBox="0 0 200 120"><use href="#koi"/></svg></div>
+  <div class="koi koi-2" aria-hidden="true"><svg viewBox="0 0 200 120"><use href="#koi"/></svg></div>
+  <div class="koi koi-3" aria-hidden="true"><svg viewBox="0 0 200 120"><use href="#koi"/></svg></div>
+
+  <svg class="faisca" style="width:26px;top:26%;left:12%" viewBox="0 0 24 24" aria-hidden="true"><use href="#faisca"/></svg>
+  <svg class="faisca" style="width:18px;top:70%;right:26%;animation-delay:1.2s" viewBox="0 0 24 24" aria-hidden="true"><use href="#faisca"/></svg>
+  <svg class="faisca" style="width:32px;bottom:16%;left:24%;animation-delay:2.1s" viewBox="0 0 24 24" aria-hidden="true"><use href="#faisca"/></svg>
+
+  <div class="wrap">
+    <div class="capa-topo">
+      <span class="mono">Laura Reynol<br>designer gráfica · Goiânia, BR</span>
+      <span class="mono">laurareynol.com</span>
+    </div>
+
+    <h1 class="titulo">
+      <span class="selo-ver">ver. 2026</span>
+      <span class="l1">PORT</span>
+      <span class="l2">FÓ<em>LIO</em></span>
+      <span class="subtitulo">( identidade, editorial &amp; ilustração )</span>
+    </h1>
+
+    <div class="capa-rodape">
+      <span class="assina">Laura Reynol</span>
+      <span class="rolar mono"><i class="linha" aria-hidden="true"></i> role para mergulhar</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="sobre" id="sobre" aria-labelledby="t-sobre">
+  <div class="halftone c" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="mono eyebrow" id="t-sobre">Sobre mim</p>
+
+    <div class="sobre-grid">
+      <div class="rev">
+        <h2 class="nome-script">Laura Reynol</h2>
+        <span class="nome-tag">designer gráfica</span>
+        <div class="bio">
+          <p>Oi! Eu sou a Laura. Projeto marcas, publicações e ilustrações que têm cheiro de coisa feita à mão — mesmo quando nascem inteiras na tela.</p>
+          <p>Gosto de trabalhar do começo: entender o negócio, achar a palavra certa, e só então desenhar. Meu repertório vem de papel — fanzines, rótulos velhos, placas pintadas à mão — e é isso que tento devolver em cada projeto.</p>
+          <p>Trabalho com marcas pequenas e projetos culturais, e adoro quando o cliente aparece com um problema mal formulado. É onde a coisa fica boa.</p>
+        </div>
+      </div>
+
+      <figure class="polaroid rev" style="margin:0 0 0 auto">
+        <i class="fita t1" aria-hidden="true"></i>
+        <i class="fita t2" aria-hidden="true"></i>
+        <div class="foto"><span>troque por<br>uma foto sua<br>— 4:5 —</span></div>
+        <figcaption class="legenda">oi :)</figcaption>
+      </figure>
+    </div>
+
+    <div class="dados">
+      <div class="rev">
+        <h3>Formação</h3>
+        <div class="item"><b>Design Gráfico</b><i>UFG · 2021 — 2025</i></div>
+        <div class="item"><b>Tipografia aplicada</b><i>Curso livre · 2024</i></div>
+      </div>
+      <div class="rev">
+        <h3>Experiência</h3>
+        <div class="item"><b>Freelancer</b><i>2023 — hoje</i><span>Identidade visual, embalagem e editorial para marcas independentes.</span></div>
+        <div class="item"><b>Estúdio Meia-Noite</b><i>2022 — 2023</i><span>Designer júnior. Social, key visual e apoio em identidade.</span></div>
+      </div>
+      <div class="rev">
+        <h3>Ferramentas</h3>
+        <div class="ferramentas">
+          <b>Ai</b><b>Ps</b><b>Id</b><b>Lr</b>
+          <b class="frio">Fg</b><b class="frio">Ae</b><b class="frio">Bl</b>
+        </div>
+        <div class="item" style="margin-top:14px"><i>Fg, Ae e Bl · em aprendizado</i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÍNDICE ============ -->
+<section class="indice" id="indice" aria-labelledby="t-indice">
+  <div class="wrap">
+    <h2 class="indice-cabeca" id="t-indice"><small>o que tem aqui dentro</small>Índice</h2>
+    <ol class="sumario">
+      <li><a href="#p01"><span class="num">01</span><span class="tit">Identidade visual</span><span class="seta">→</span></a></li>
+      <li><a href="#p02"><span class="num">02</span><span class="tit">Embalagem</span><span class="seta">→</span></a></li>
+      <li><a href="#p03"><span class="num">03</span><span class="tit">Editorial</span><span class="seta">→</span></a></li>
+      <li><a href="#p04"><span class="num">04</span><span class="tit">Produto digital</span><span class="seta">→</span></a></li>
+      <li><a href="#p05"><span class="num">05</span><span class="tit">Ilustração</span><span class="seta">→</span></a></li>
+      <li><a href="#p06"><span class="num">06</span><span class="tit">Tipografia</span><span class="seta">→</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PROJETOS ============ -->
+<div class="projetos">
+  <div class="wrap">
+
+    <!-- 01 -->
+    <article class="proj rev" id="p01">
+      <div class="proj-cabeca"><span class="proj-num">01</span><span class="proj-cat">Identidade visual</span></div>
+      <h2 class="proj-tit">Ruído Bom — café e disquaria</h2>
+      <div class="proj-corpo">
+        <div class="proj-texto">
+          <span class="ficticio">Projeto de amostra</span>
+          <p>Uma cafeteria que também vende vinil no Setor Marista. O desafio era não parecer nem cafeteria genérica nem loja de disco nostálgica.</p>
+          <p>O logotipo nasceu do sulco do disco: uma letra que se repete e desafina de leve. A paleta ficou em azul-tinta e laranja de agulha aquecida, e todo o material impresso usa papel de baixa gramatura, com registro propositalmente desalinhado.</p>
+          <div class="tags"><span>Naming</span><span>Logotipo</span><span>Papelaria</span><span>Sinalização</span></div>
+        </div>
+        <div class="mostra">
+          <div class="id-grid">
+            <div class="id-logo">
+              <span class="marca-l">RUÍDO<br>BOM<em>café · disco</em></span>
+              <i class="disco" aria-hidden="true"></i>
+            </div>
+            <div class="chips" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
+          </div>
+          <span class="cap">Substitua por: logo, paleta, aplicações</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="proj rev" id="p02">
+      <div class="proj-cabeca"><span class="proj-num">02</span><span class="proj-cat">Embalagem</span></div>
+      <h2 class="proj-tit">Manacá — botânicos de banho</h2>
+      <div class="proj-corpo">
+        <div class="proj-texto">
+          <span class="ficticio">Projeto de amostra</span>
+          <p>Linha de sabonetes e óleos feita em lotes pequenos, vendida em feira. Precisava caber na mão, sobreviver ao transporte e ser bonita sem plástico.</p>
+          <p>Cada aroma ganhou uma cor tirada da própria planta, e o rótulo é impresso em uma cor só — o que barateia a tiragem e dá unidade à prateleira.</p>
+          <div class="tags"><span>Rótulo</span><span>Sistema de cor</span><span>Impressão 1 cor</span></div>
+        </div>
+        <div class="mostra">
+          <div class="pack" aria-hidden="true">
+            <div class="frasco"><div class="rotulo"><b>Capim</b><i>limão</i></div></div>
+            <div class="frasco"><div class="rotulo"><b>Copaíba</b><i>resina</i></div></div>
+            <div class="frasco"><div class="rotulo"><b>Manacá</b><i>flor</i></div></div>
+          </div>
+          <span class="cap">Substitua por: mockups de embalagem</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="proj rev" id="p03">
+      <div class="proj-cabeca"><span class="proj-num">03</span><span class="proj-cat">Editorial</span></div>
+      <h2 class="proj-tit">Aluvião — revista independente</h2>
+      <div class="proj-corpo">
+        <div class="proj-texto">
+          <span class="ficticio">Projeto de amostra</span>
+          <p>Publicação semestral sobre rios urbanos e o que a cidade faz com eles. Três números, tiragem de 300, distribuição em livrarias e feiras.</p>
+          <p>O projeto gráfico usa uma grade de seis colunas que "transborda" nas páginas de ensaio fotográfico — o texto invade a margem como quem alaga.</p>
+          <div class="tags"><span>Projeto gráfico</span><span>Grade</span><span>Capa</span><span>Pré-impressão</span></div>
+        </div>
+        <div class="mostra">
+          <div class="spread" aria-hidden="true">
+            <div class="pag">
+              <span class="h">O rio<br>que virou<br>avenida</span>
+              <div class="col">
+                <i class="lin"></i><i class="lin"></i><i class="lin curta"></i>
+                <i class="lin"></i><i class="lin"></i><i class="lin curta"></i>
+              </div>
+              <div class="foto"></div>
+            </div>
+            <div class="pag">
+              <div class="foto"></div>
+              <div class="col">
+                <i class="lin"></i><i class="lin curta"></i><i class="lin"></i><i class="lin"></i>
+              </div>
+            </div>
+          </div>
+          <span class="cap">Substitua por: fotos das páginas abertas</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- interlúdio -->
+  <section class="interludio rev" aria-hidden="true">
+    <blockquote>Design bom é o que sobra depois que tiro tudo que era só enfeite.</blockquote>
+    <cite>caderno de anotações, 2025</cite>
+  </section>
+
+  <div class="wrap">
+    <!-- 04 -->
+    <article class="proj rev" id="p04">
+      <div class="proj-cabeca"><span class="proj-num">04</span><span class="proj-cat">Produto digital</span></div>
+      <h2 class="proj-tit">Bem-te-vi — identificar aves pelo canto</h2>
+      <div class="proj-corpo">
+        <div class="proj-texto">
+          <span class="ficticio">Projeto de amostra</span>
+          <p>App que ouve o quintal e diz qual pássaro está cantando. O público é gente curiosa, não ornitólogo — então a interface tem um botão grande e quase nada mais.</p>
+          <p>Desenhei o fluxo de gravação, a lista de espécies e o modo noturno. A onda sonora é o elemento fixo da marca: aparece no ícone, no carregamento e no compartilhamento.</p>
+          <div class="tags"><span>UX</span><span>UI</span><span>Design system</span><span>Protótipo</span></div>
+        </div>
+        <div class="mostra">
+          <div class="telas" aria-hidden="true">
+            <div class="fone">
+              <div class="tela">
+                <span class="ui-t">Escutando…</span>
+                <div class="onda">
+                  <i style="animation-delay:0s"></i><i style="animation-delay:.1s"></i><i style="animation-delay:.2s"></i><i style="animation-delay:.3s"></i><i style="animation-delay:.15s"></i><i style="animation-delay:.05s"></i><i style="animation-delay:.25s"></i><i style="animation-delay:.35s"></i><i style="animation-delay:.12s"></i>
+                </div>
+                <div class="card-ave"><i class="bo"></i><div class="tx"><div class="l"></div><div class="l s"></div></div></div>
+                <div class="pill"></div><div class="pill o"></div><div class="pill"></div>
+              </div>
+            </div>
+            <div class="fone b">
+              <div class="tela">
+                <span class="ui-t">Sabiá-laranjeira</span>
+                <div class="onda">
+                  <i style="animation-delay:.2s"></i><i style="animation-delay:0s"></i><i style="animation-delay:.3s"></i><i style="animation-delay:.1s"></i><i style="animation-delay:.25s"></i><i style="animation-delay:.05s"></i><i style="animation-delay:.35s"></i><i style="animation-delay:.15s"></i><i style="animation-delay:.28s"></i>
+                </div>
+                <div class="card-ave"><i class="bo"></i><div class="tx"><div class="l"></div><div class="l s"></div></div></div>
+                <div class="card-ave"><i class="bo"></i><div class="tx"><div class="l"></div><div class="l s"></div></div></div>
+              </div>
+            </div>
+          </div>
+          <span class="cap">Substitua por: telas do seu protótipo</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="proj rev" id="p05">
+      <div class="proj-cabeca"><span class="proj-num">05</span><span class="proj-cat">Ilustração</span></div>
+      <h2 class="proj-tit">Bestiário Doméstico</h2>
+      <div class="proj-corpo">
+        <div class="proj-texto">
+          <span class="ficticio">Projeto de amostra</span>
+          <p>Série pessoal sobre os bichos que dividem a casa com a gente e ninguém convidou: a lagartixa da cozinha, a mariposa da lâmpada, o gato do vizinho.</p>
+          <p>Feita em nanquim e finalizada em risografia de duas cores. Virou uma série de doze pranchas e um zine esgotado na primeira feira.</p>
+          <div class="tags"><span>Nanquim</span><span>Risografia</span><span>Zine</span></div>
+        </div>
+        <div class="mostra">
+          <div class="bestiario" aria-hidden="true">
+            <div class="quadro"><svg viewBox="0 0 24 24"><use href="#faisca" fill="#16257E"/></svg></div>
+            <div class="quadro"><svg viewBox="0 0 200 120"><use href="#koi"/></svg></div>
+            <div class="quadro"><svg viewBox="0 0 24 24"><use href="#faisca" fill="#E4531B"/></svg></div>
+            <div class="quadro"><svg viewBox="0 0 200 120"><use href="#koi" opacity=".85"/></svg></div>
+            <div class="quadro"><svg viewBox="0 0 24 24"><use href="#faisca" fill="#16257E"/></svg></div>
+            <div class="quadro"><svg viewBox="0 0 24 24"><use href="#faisca" fill="#FBF6EC"/></svg></div>
+          </div>
+          <span class="cap">Substitua por: suas ilustrações (quadrado, 1:1)</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 06 -->
+    <article class="proj rev" id="p06">
+      <div class="proj-cabeca"><span class="proj-num">06</span><span class="proj-cat">Tipografia</span></div>
+      <h2 class="proj-tit">Cerrado Display</h2>
+      <div class="proj-corpo">
+        <div class="proj-texto">
+          <span class="ficticio">Projeto de amostra</span>
+          <p>Fonte de exibição desenhada a partir de letreiros pintados à mão em beira de estrada goiana — aquelas de posto e restaurante de caminhoneiro.</p>
+          <p>Duas larguras, 340 glifos, acentuação completa para português. Ainda em desenvolvimento; a versão itálica é a próxima etapa.</p>
+          <div class="tags"><span>Desenho de letra</span><span>Glyphs</span><span>Em andamento</span></div>
+        </div>
+        <div class="mostra">
+          <div class="espec">
+            <div class="glifos">Ç ã <em>Q</em> &amp;</div>
+            <div class="alfabeto">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</div>
+            <div class="pesos"><span>Regular</span><span>Medium</span><span>Bold</span><span>340 glifos</span></div>
+          </div>
+          <span class="cap">Substitua por: espécime da sua fonte</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============ CONTATO ============ -->
+<section class="contato" id="contato" aria-labelledby="t-contato">
+  <div class="wrap">
+    <h2 id="t-contato">Vamos<br>fazer<br><em>junto?</em></h2>
+    <p>Estou aceitando projetos de identidade, embalagem e editorial. Me conta o que você está construindo — respondo em até dois dias úteis.</p>
+    <div class="links">
+      <a href="mailto:ola@laurareynol.com"><span class="rot">e-mail</span><span class="val">ola@laurareynol.com</span></a>
+      <a href="#" ><span class="rot">Instagram</span><span class="val">@lauravreynol</span></a>
+      <a href="#" ><span class="rot">Behance</span><span class="val">behance.net/lauravreynol</span></a>
+      <a href="#" ><span class="rot">WhatsApp</span><span class="val">(62) 9 0000-0000</span></a>
+    </div>
+    <div class="rodape">
+      <span>© 2026 Laura Reynol</span>
+      <span>Goiânia · Goiás · Brasil</span>
+      <span>ver. 2026</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* revelar ao rolar */
+  var alvos = document.querySelectorAll('.rev');
+  if(reduz || !('IntersectionObserver' in window)){
+    alvos.forEach(function(e){e.classList.add('on')});
+  } else {
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('on'); io.unobserve(en.target); }
+      });
+    },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    alvos.forEach(function(e){io.observe(e)});
+  }
+
+  /* topbar aparece depois da capa */
+  var bar = document.getElementById('topbar');
+  var capa = document.querySelector('.capa');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(ents){
+      bar.classList.toggle('on', !ents[0].isIntersecting);
+    },{threshold:0}).observe(capa);
+  }
+
+  /* bolhas no índice */
+  if(!reduz){
+    var ind = document.querySelector('.indice');
+    for(var i=0;i<14;i++){
+      var b=document.createElement('i');
+      b.className='bolha';
+      var s=4+Math.random()*16;
+      b.style.width=s+'px'; b.style.height=s+'px';
+      b.style.left=(Math.random()*100)+'%';
+      b.style.bottom=(-10-Math.random()*20)+'%';
+      b.style.animationDuration=(9+Math.random()*13)+'s';
+      b.style.animationDelay=(Math.random()*9)+'s';
+      ind.appendChild(b);
+    }
+  }
+})();
+</script>
+</body>
+</html>
