@@ -7,8 +7,14 @@
 <meta name="description" content="Laura Reynol — designer gráfica. Identidade visual, editorial e ilustração.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+@font-face{
+  font-family:"Aston Script";
+  src:url("fonts/aston-script.woff2") format("woff2"),
+      url("fonts/aston-script.ttf") format("truetype");
+  font-weight:400;font-style:normal;font-display:swap;
+}
 /* ============ TOKENS ============ */
 :root{
   --bg:#242220;
@@ -20,7 +26,7 @@
   --vinho-l:#9C3A45;
   --linha:rgba(244,239,226,.16);
   --linha-papel:rgba(24,20,16,.16);
-  --display:"Petit Formal Script",cursive;
+  --display:"Aston Script",cursive;
   --mono:"Space Mono",ui-monospace,"SF Mono",Consolas,monospace;
   --corpo:"Inter",system-ui,sans-serif;
   --gutter:clamp(16px,4vw,56px);
@@ -48,13 +54,9 @@ a{color:inherit}
 .grao{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.05;mix-blend-mode:overlay}
 .grao svg{width:100%;height:100%}
 
-/* carimbo: título em script, sombra vinho sutil deslocada */
-.carimbo{position:relative;display:inline-block;font-family:var(--display);
+/* carimbo: título em script, cor única vinho escuro */
+.carimbo{display:inline-block;font-family:var(--display);color:var(--vinho);
   font-weight:400;letter-spacing:.005em;line-height:1.05}
-.carimbo::before{content:attr(data-txt);position:absolute;left:3px;top:3px;
-  color:var(--vinho);opacity:.5;z-index:-1;white-space:pre}
-.carimbo .brk{color:var(--vinho-l);font-family:var(--mono);font-weight:700;
-  font-size:.5em;vertical-align:.15em;letter-spacing:0}
 
 /* ============ TOPO ============ */
 .topo{position:fixed;top:0;left:0;right:0;z-index:100;
@@ -99,8 +101,8 @@ a{color:inherit}
 .foto-box span{text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
   text-transform:uppercase;padding:0 20px;line-height:1.9;opacity:.7}
 .sobre h2{font-family:var(--display);font-weight:400;font-size:clamp(38px,6vw,64px);
-  line-height:1.05;margin:0 0 22px}
-.sobre h2 em{font-style:normal;color:var(--vinho)}
+  line-height:1.05;margin:0 0 22px;color:var(--vinho)}
+.sobre h2 em{font-style:normal}
 .dados-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,30px);margin-top:26px}
 @media(max-width:560px){.dados-cols{grid-template-columns:1fr 1fr}}
 .dados-cols h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
@@ -121,9 +123,10 @@ a{color:inherit}
 .indice-lista li:last-child{border-bottom:1px solid var(--linha-papel)}
 .indice-lista a{display:flex;align-items:baseline;gap:16px;text-decoration:none;padding:16px 2px;
   transition:padding .3s ease}
-.indice-lista a:hover{padding-left:14px;color:var(--vinho)}
+.indice-lista a:hover{padding-left:14px}
+.indice-lista a:hover .nome{opacity:.7}
 .indice-lista .num{font-family:var(--mono);font-size:11px;opacity:.55;min-width:26px}
-.indice-lista .nome{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,40px)}
+.indice-lista .nome{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,40px);color:var(--vinho)}
 .indice-lista .est{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.1em;
   text-transform:uppercase;opacity:.5}
 
@@ -208,7 +211,7 @@ a{color:inherit}
     </div>
 
     <div class="capa-meio">
-      <h1 class="capa-tit carimbo" data-txt="[ Portfólio ]"><span class="brk">[</span> Portfólio <span class="brk">]</span></h1>
+      <h1 class="capa-tit carimbo">[ Portfólio ]</h1>
       <p class="capa-sub">identidade · editorial · ilustração — ver. 2026</p>
     </div>
 
@@ -255,9 +258,9 @@ a{color:inherit}
 </section>
 
 <!-- ============ FAIXA ÍNDICE ============ -->
-<section class="faixa" aria-hidden="true">
+<section class="faixa folha" aria-hidden="true">
   <div class="wrap">
-    <h2 class="carimbo" data-txt="[ Conteúdo . ]"><span class="brk">[</span> Conteúdo <span class="brk">.</span> <span class="brk">]</span></h2>
+    <h2 class="carimbo">[ Conteúdo . ]</h2>
     <span class="sub rot">tudo que tem por aqui</span>
   </div>
 </section>
@@ -277,9 +280,9 @@ a{color:inherit}
 <div class="projetos">
 
   <!-- PROJETO A — modelo de exemplo -->
-  <section class="faixa" aria-hidden="true">
+  <section class="faixa folha" aria-hidden="true">
     <div class="wrap">
-      <h2 class="carimbo" data-txt="[ Projeto A . ]"><span class="brk">[</span> Projeto A <span class="brk">.</span> <span class="brk">]</span></h2>
+      <h2 class="carimbo">[ Projeto A . ]</h2>
       <div class="proj-meta">
         <span>identidade visual</span><span>2026</span><span>papelaria</span>
       </div>
@@ -302,9 +305,9 @@ a{color:inherit}
   </article>
 
   <!-- PROJETO B — modelo de exemplo -->
-  <section class="faixa" aria-hidden="true">
+  <section class="faixa folha" aria-hidden="true">
     <div class="wrap">
-      <h2 class="carimbo" data-txt="[ Projeto B . ]"><span class="brk">[</span> Projeto B <span class="brk">.</span> <span class="brk">]</span></h2>
+      <h2 class="carimbo">[ Projeto B . ]</h2>
       <div class="proj-meta">
         <span>editorial</span><span>2026</span><span>embalagem</span>
       </div>
@@ -338,7 +341,7 @@ a{color:inherit}
 <section class="contato" id="contato" aria-labelledby="t-contato">
   <div class="folha">
     <div class="folha-int">
-      <h2 id="t-contato" class="carimbo" data-txt="[ Obrigada . ]"><span class="brk">[</span> Obrigada <span class="brk">.</span> <span class="brk">]</span></h2>
+      <h2 id="t-contato" class="carimbo">[ Obrigada . ]</h2>
       <div class="links">
         <a href="mailto:laurareynoldesign@gmail.com"><span class="rot">e-mail</span><span class="val">laurareynoldesign@gmail.com</span></a>
         <a href="#"><span class="rot">Instagram</span><span class="val">@laurareynol</span></a>

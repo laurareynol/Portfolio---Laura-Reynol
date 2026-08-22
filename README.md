@@ -4,18 +4,21 @@ Site estático de página única (`index.html`), sem build/dependências. Basta 
 
 ## Estilo
 
-Fundo escuro, painéis de "papel" (`.folha`) para texto, títulos grandes em carimbo entre colchetes (`.carimbo`, ex. `[ Work . ]`) na fonte script "Petit Formal Script", e vinho (`--vinho`) como única cor de destaque.
+Fundo escuro, painéis de "papel" (`.folha`) para texto e títulos grandes entre colchetes (`.carimbo`, ex. `[ Work . ]`) na fonte script "Aston Script", sempre em vinho escuro sólido (`--vinho`) — sem sombra ou segunda cor. Vinho é a única cor de destaque do site.
 
 ## Estrutura
 
 - `index.html` — portfólio atual.
+- `fonts/aston-script.woff2` e `fonts/aston-script.ttf` — a fonte dos títulos, hospedada localmente (não depende do Google Fonts).
 - `arquivo/index-antigo.htm` — versão bem anterior do site (estilo azul/laranja), mantida só como referência. Não está em uso.
+
+Para trocar a fonte dos títulos no futuro, basta substituir os dois arquivos em `fonts/` (mesmo nome) ou ajustar o bloco `@font-face` e a variável `--display` no início do `<style>`.
 
 ## Como adicionar um projeto novo
 
 No `index.html`, cada projeto é um par de blocos: uma `<section class="faixa">` (título-carimbo + categorias, fundo escuro) seguida de um `<article class="folha">` (texto + grade de imagens, fundo papel). Duplique os dois blocos de "Projeto A" e ajuste:
 
-1. `data-txt` e o conteúdo do `<h2 class="carimbo">` — nome do projeto, formato `[ Nome . ]`. Os dois precisam ter o mesmo texto (o `data-txt` gera a sombra vinho atrás do título).
+1. O conteúdo do `<h2 class="carimbo">` — nome do projeto, formato `[ Nome . ]`.
 2. `.proj-meta` — categorias/tags curtas (ex.: identidade visual, 2026, papelaria).
 3. Remova o `.proj-status` ("aguardando conteúdo") quando o projeto tiver conteúdo real.
 4. `.proj-corpo` — texto sobre o desafio/ideia/solução.
