@@ -4,7 +4,9 @@ Site estático de página única (`index.html`), sem build/dependências. Basta 
 
 ## Estilo
 
-Seções alternam entre bege claro (`.clara`) e vinho bem escuro (`.escura`) conforme a página é rolada — como no site do Cisne Negro. Títulos grandes (`.carimbo`, ex. `Trabalhos.`) usam a fonte script "Aston Script" e sempre a cor de acento da seção em que estão (vinho escuro nas seções claras, um vinho rosado claro nas seções escuras — variável `--acento`, definida por seção). A navegação fica fixa na lateral esquerda (desktop) usando `mix-blend-mode: difference`, o que faz o texto do menu se adaptar automaticamente à cor de fundo por trás dele, sem JavaScript.
+Seções alternam entre bege claro (`.clara`) e vinho bem escuro (`.escura`) conforme a página é rolada — como no site do Cisne Negro. Títulos grandes (`.carimbo`, ex. `Trabalhos.`) usam a fonte script "Aston Script" e sempre a cor de acento da seção em que estão (vinho escuro nas seções claras, bege nas seções escuras — variável `--acento`, definida por seção). A navegação fica fixa na lateral esquerda (desktop) e, no topo, em telas menores; um `IntersectionObserver` detecta qual seção está no centro da tela e ajusta a cor do menu (vinho ou bege) por CSS puro.
+
+O site tem seletor de idioma (PT/EN/ES) no rodapé da navegação. A troca é feita em JavaScript puro: cada texto traduzível tem um atributo `data-i18n="chave"`, e o dicionário com as três versões fica no `<script>` no final do `index.html` (objeto `TR`). A escolha do visitante fica salva no navegador (`localStorage`) e é aplicada de novo na próxima visita.
 
 ## Estrutura
 
@@ -24,6 +26,8 @@ No `index.html`, cada projeto é um único `<section class="pagina clara">` ou `
 4. `.proj-corpo` — texto sobre o desafio/ideia/solução.
 5. `.grade-img` — cada `<div class="slot">` é um espaço de imagem. Troque o conteúdo por uma tag `<img>` real. As classes `s-g2`/`s-g3`/`s-g4`/`s-g6` controlam quantas colunas (de 6) a imagem ocupa; `destaque` dá um leve tom de acento a um slot.
 6. Dê um `id` único à seção (ex. `id="projeto-c"`) e adicione a entrada correspondente na lista `.indice-lista`.
+
+Se quiser que o texto do projeto novo também apareça em inglês e espanhol, adicione um `data-i18n="chave-nova"` no elemento e a tradução correspondente nas três línguas dentro do objeto `TR`, no `<script>` no final do arquivo (é só me pedir que eu faço isso pra você quando enviar os projetos).
 
 ## Como adicionar imagens (incluindo sua foto)
 

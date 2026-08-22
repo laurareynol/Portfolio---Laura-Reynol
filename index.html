@@ -77,6 +77,13 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 .lateral .rodape-lateral{color:inherit;font-family:var(--mono);font-size:10px;letter-spacing:.12em}
 @media(max-width:959px){.lateral{display:none}}
 
+/* ============ SELETOR DE IDIOMA ============ */
+.idiomas{display:flex;gap:12px;font-family:var(--mono);font-size:10px;letter-spacing:.1em}
+.idiomas button{background:none;border:0;padding:0;margin:0;color:inherit;opacity:.5;
+  cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:uppercase}
+.idiomas button.ativo{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.menu-mob .idiomas{font-size:13px;gap:18px;margin-top:6px}
+
 /* ============ TOPO (nav mobile) ============ */
 .topo-mob{display:none}
 @media(max-width:959px){
@@ -215,23 +222,33 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 <aside class="lateral" aria-label="Navegação principal">
   <span class="marca">Laura Reynol</span>
   <nav aria-label="Seções">
-    <a href="#sobre">Sobre</a>
-    <a href="#indice">Trabalhos</a>
-    <a href="#contato">Contato</a>
+    <a href="#sobre" data-i18n="nav-sobre">Sobre</a>
+    <a href="#indice" data-i18n="nav-trabalhos">Trabalhos</a>
+    <a href="#contato" data-i18n="nav-contato">Contato</a>
   </nav>
+  <div class="idiomas" role="group" aria-label="Idioma">
+    <button type="button" data-lang="pt">PT</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="es">ES</button>
+  </div>
   <span class="rodape-lateral">ver. 2026</span>
 </aside>
 
 <!-- ============ NAV MOBILE ============ -->
 <header class="topo-mob">
   <span class="marca">Laura Reynol</span>
-  <button type="button" id="abrir-menu" aria-haspopup="true" aria-controls="menu-mob">Menu</button>
+  <button type="button" id="abrir-menu" aria-haspopup="true" aria-controls="menu-mob" data-i18n="menu-abrir">Menu</button>
 </header>
 <div class="menu-mob" id="menu-mob">
-  <button type="button" class="fechar" id="fechar-menu">Fechar</button>
-  <a href="#sobre">Sobre</a>
-  <a href="#indice">Trabalhos</a>
-  <a href="#contato">Contato</a>
+  <button type="button" class="fechar" id="fechar-menu" data-i18n="menu-fechar">Fechar</button>
+  <a href="#sobre" data-i18n="nav-sobre">Sobre</a>
+  <a href="#indice" data-i18n="nav-trabalhos">Trabalhos</a>
+  <a href="#contato" data-i18n="nav-contato">Contato</a>
+  <div class="idiomas" role="group" aria-label="Idioma">
+    <button type="button" data-lang="pt">PT</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="es">ES</button>
+  </div>
 </div>
 
 <main>
@@ -239,18 +256,18 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 <!-- ============ CAPA ============ -->
 <section class="pagina clara capa wrap" aria-label="Capa">
   <div class="capa-meta rot">
-    <div>Criado e preparado por<b>Laura Reynol</b></div>
-    <div>Design Gráfico<b>agosto 2026</b></div>
-    <div>laurareynoldesign@gmail.com<b>Goiânia, Brasil</b></div>
+    <div><span data-i18n="capa-meta-criado-label">Criado e preparado por</span><b>Laura Reynol</b></div>
+    <div><span data-i18n="capa-meta-design-label">Design Gráfico</span><b data-i18n="capa-meta-mes">agosto 2026</b></div>
+    <div>laurareynoldesign@gmail.com<b data-i18n="capa-meta-local">Goiânia, Brasil</b></div>
   </div>
 
   <div class="capa-meio">
     <h1 class="capa-tit carimbo">Portfólio</h1>
-    <p class="capa-sub">identidade · editorial · ilustração — ver. 2026</p>
+    <p class="capa-sub" data-i18n="capa-sub">identidade · editorial · ilustração — ver. 2026</p>
   </div>
 
   <div class="capa-rodape rot">
-    <span>role para ver mais ↓</span>
+    <span data-i18n="capa-rolar">role para ver mais ↓</span>
     <span>ver. 2026</span>
   </div>
 </section>
@@ -263,22 +280,22 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
         <img src="imagens/laura-foto.jpg" alt="Retrato de Laura Reynol">
       </div>
       <div class="rev">
-        <h2 id="t-sobre">Olá! Eu sou<br>a <em>Laura</em>.</h2>
-        <p>Trabalho do começo: entendo o negócio, encontro a palavra certa e só então desenho. Gosto de projetos que chegam com um problema mal formulado — é aí que a coisa fica boa.</p>
-        <p>Este site está em construção. Assim que os projetos forem enviados, cada um ganha sua própria seção lá embaixo, no índice.</p>
+        <h2 id="t-sobre" data-i18n="sobre-titulo">Olá! Eu sou<br>a <em>Laura</em>.</h2>
+        <p data-i18n="sobre-p1">Trabalho do começo: entendo o negócio, encontro a palavra certa e só então desenho. Gosto de projetos que chegam com um problema mal formulado — é aí que a coisa fica boa.</p>
+        <p data-i18n="sobre-p2">Este site está em construção. Assim que os projetos forem enviados, cada um ganha sua própria seção lá embaixo, no índice.</p>
 
         <div class="dados-cols">
           <div>
-            <h3>Formação</h3>
-            <p>Design Gráfico<br><span class="fraca">Instituição · ano — ano</span></p>
+            <h3 data-i18n="form-titulo">Formação</h3>
+            <p data-i18n="form-corpo">Design Gráfico<br><span class="fraca">Instituição · ano — ano</span></p>
           </div>
           <div>
-            <h3>Habilidades</h3>
-            <p>Identidade visual<br>Editorial<br>UI / Produto digital</p>
+            <h3 data-i18n="hab-titulo">Habilidades</h3>
+            <p data-i18n="hab-corpo">Identidade visual<br>Editorial<br>UI / Produto digital</p>
           </div>
           <div>
-            <h3>Ferramentas</h3>
-            <p>Illustrator · Photoshop<br>Figma · InDesign</p>
+            <h3 data-i18n="ferr-titulo">Ferramentas</h3>
+            <p data-i18n="ferr-corpo">Illustrator · Photoshop<br>Figma · InDesign</p>
           </div>
         </div>
 
@@ -294,13 +311,13 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 <section class="pagina clara" id="indice" aria-label="Índice de projetos">
   <div class="wrap">
     <div class="indice-cabeca">
-      <h2 class="carimbo">Conteúdo.</h2>
-      <span class="rot">tudo que tem por aqui</span>
+      <h2 class="carimbo" data-i18n="indice-titulo">Conteúdo.</h2>
+      <span class="rot" data-i18n="indice-sub">tudo que tem por aqui</span>
     </div>
     <ol class="indice-lista">
-      <li><a href="#projeto-a"><span class="num">01</span><span class="nome">Projeto A</span><span class="est">aguardando conteúdo</span></a></li>
-      <li><a href="#projeto-b"><span class="num">02</span><span class="nome">Projeto B</span><span class="est">aguardando conteúdo</span></a></li>
-      <li><a href="#mais"><span class="num">03</span><span class="nome">Mais em breve</span><span class="est">→</span></a></li>
+      <li><a href="#projeto-a"><span class="num">01</span><span class="nome" data-i18n="indice-nome-a">Projeto A</span><span class="est" data-i18n="indice-status">aguardando conteúdo</span></a></li>
+      <li><a href="#projeto-b"><span class="num">02</span><span class="nome" data-i18n="indice-nome-b">Projeto B</span><span class="est" data-i18n="indice-status">aguardando conteúdo</span></a></li>
+      <li><a href="#mais"><span class="num">03</span><span class="nome" data-i18n="indice-nome-mais">Mais em breve</span><span class="est">→</span></a></li>
     </ol>
   </div>
 </section>
@@ -309,21 +326,21 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 <section class="pagina escura" id="projeto-a">
   <div class="wrap">
     <div class="proj-cabeca">
-      <h2 class="carimbo">Projeto A.</h2>
+      <h2 class="carimbo" data-i18n="projA-titulo">Projeto A.</h2>
       <div class="proj-meta">
-        <span>identidade visual</span><span>2026</span><span>papelaria</span>
+        <span data-i18n="projA-tag1">identidade visual</span><span>2026</span><span data-i18n="projA-tag3">papelaria</span>
       </div>
-      <span class="proj-status">aguardando conteúdo — bloco-modelo</span>
+      <span class="proj-status" data-i18n="proj-status-placeholder">aguardando conteúdo — bloco-modelo</span>
     </div>
     <div class="proj-corpo rev">
-      <p>Este é um bloco-modelo. Quando o projeto real chegar, substitua este texto pela descrição: o desafio, a ideia e a solução em 2–3 frases curtas.</p>
+      <p data-i18n="projA-corpo">Este é um bloco-modelo. Quando o projeto real chegar, substitua este texto pela descrição: o desafio, a ideia e a solução em 2–3 frases curtas.</p>
     </div>
     <div class="grade-img rev" aria-hidden="true">
-      <div class="slot s-g4 destaque"><span>imagem 01<br>capa — substituir</span></div>
-      <div class="slot s-g2"><span>imagem 02</span></div>
-      <div class="slot s-g2"><span>imagem 03</span></div>
-      <div class="slot s-g2"><span>imagem 04</span></div>
-      <div class="slot s-g6"><span>imagem 05 — larga</span></div>
+      <div class="slot s-g4 destaque"><span data-i18n="slot-imagem-01-capa">imagem 01<br>capa — substituir</span></div>
+      <div class="slot s-g2"><span data-i18n="slot-imagem-02">imagem 02</span></div>
+      <div class="slot s-g2"><span data-i18n="slot-imagem-03">imagem 03</span></div>
+      <div class="slot s-g2"><span data-i18n="slot-imagem-04">imagem 04</span></div>
+      <div class="slot s-g6"><span data-i18n="slot-imagem-05-larga">imagem 05 — larga</span></div>
     </div>
   </div>
 </section>
@@ -332,25 +349,25 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 <section class="pagina clara" id="projeto-b">
   <div class="wrap">
     <div class="proj-cabeca">
-      <h2 class="carimbo">Projeto B.</h2>
+      <h2 class="carimbo" data-i18n="projB-titulo">Projeto B.</h2>
       <div class="proj-meta">
-        <span>editorial</span><span>2026</span><span>embalagem</span>
+        <span data-i18n="projB-tag1">editorial</span><span>2026</span><span data-i18n="projB-tag3">embalagem</span>
       </div>
-      <span class="proj-status">aguardando conteúdo — bloco-modelo</span>
+      <span class="proj-status" data-i18n="proj-status-placeholder">aguardando conteúdo — bloco-modelo</span>
     </div>
     <div class="proj-corpo rev">
-      <p>Duplique este bloco &lt;section class="pagina"&gt; para cada projeto novo. Troque nome, categorias, texto e imagens — veja o README para o passo a passo.</p>
+      <p data-i18n="projB-corpo">Duplique este bloco &lt;section class="pagina"&gt; para cada projeto novo. Troque nome, categorias, texto e imagens — veja o README para o passo a passo.</p>
     </div>
     <div class="grade-img rev" aria-hidden="true">
-      <div class="slot s-g3"><span>imagem 01</span></div>
-      <div class="slot s-g3 destaque"><span>imagem 02</span></div>
-      <div class="slot s-g3"><span>imagem 03</span></div>
-      <div class="slot s-g3"><span>imagem 04</span></div>
+      <div class="slot s-g3"><span data-i18n="slot-imagem-01">imagem 01</span></div>
+      <div class="slot s-g3 destaque"><span data-i18n="slot-imagem-02">imagem 02</span></div>
+      <div class="slot s-g3"><span data-i18n="slot-imagem-03">imagem 03</span></div>
+      <div class="slot s-g3"><span data-i18n="slot-imagem-04">imagem 04</span></div>
     </div>
 
     <div class="em-breve rev" id="mais">
-      <span class="rot">mais projetos em breve</span>
-      <p>Assim que os próximos trabalhos forem enviados, eles entram aqui — cada um com seu título, categorias e grade de imagens.</p>
+      <span class="rot" data-i18n="em-breve-label">mais projetos em breve</span>
+      <p data-i18n="em-breve-p">Assim que os próximos trabalhos forem enviados, eles entram aqui — cada um com seu título, categorias e grade de imagens.</p>
     </div>
   </div>
 </section>
@@ -358,15 +375,15 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 <!-- ============ CONTATO ============ -->
 <section class="pagina escura contato" id="contato" aria-labelledby="t-contato">
   <div class="wrap">
-    <h2 id="t-contato" class="carimbo">Obrigada.</h2>
+    <h2 id="t-contato" class="carimbo" data-i18n="contato-titulo">Obrigada.</h2>
     <div class="links">
-      <a href="mailto:laurareynoldesign@gmail.com"><span class="rot">e-mail</span><span class="val">laurareynoldesign@gmail.com</span></a>
+      <a href="mailto:laurareynoldesign@gmail.com"><span class="rot" data-i18n="contato-email-label">e-mail</span><span class="val">laurareynoldesign@gmail.com</span></a>
       <a href="#"><span class="rot">Instagram</span><span class="val">@laurareynol</span></a>
       <a href="#"><span class="rot">Behance</span><span class="val">behance.net/laurareynol</span></a>
     </div>
     <div class="rodape-fim">
       <span>© 2026 Laura Reynol</span>
-      <span>Goiânia · Goiás · Brasil</span>
+      <span data-i18n="rodape-local">Goiânia · Goiás · Brasil</span>
       <span>ver. 2026</span>
     </div>
   </div>
@@ -409,6 +426,119 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
     },{rootMargin:'-50% 0px -50% 0px', threshold:0});
     paginas.forEach(function(p){ ioFundo.observe(p); });
   }
+
+  /* ============ IDIOMA ============ */
+  var TR = {
+    pt: {
+      'nav-sobre':'Sobre','nav-trabalhos':'Trabalhos','nav-contato':'Contato',
+      'menu-abrir':'Menu','menu-fechar':'Fechar',
+      'capa-meta-criado-label':'Criado e preparado por','capa-meta-design-label':'Design Gráfico',
+      'capa-meta-mes':'agosto 2026','capa-meta-local':'Goiânia, Brasil',
+      'capa-sub':'identidade · editorial · ilustração — ver. 2026',
+      'capa-rolar':'role para ver mais ↓',
+      'sobre-titulo':'Olá! Eu sou<br>a <em>Laura</em>.',
+      'sobre-p1':'Trabalho do começo: entendo o negócio, encontro a palavra certa e só então desenho. Gosto de projetos que chegam com um problema mal formulado — é aí que a coisa fica boa.',
+      'sobre-p2':'Este site está em construção. Assim que os projetos forem enviados, cada um ganha sua própria seção lá embaixo, no índice.',
+      'form-titulo':'Formação','form-corpo':'Design Gráfico<br><span class="fraca">Instituição · ano — ano</span>',
+      'hab-titulo':'Habilidades','hab-corpo':'Identidade visual<br>Editorial<br>UI / Produto digital',
+      'ferr-titulo':'Ferramentas','ferr-corpo':'Illustrator · Photoshop<br>Figma · InDesign',
+      'indice-titulo':'Conteúdo.','indice-sub':'tudo que tem por aqui',
+      'indice-nome-a':'Projeto A','indice-nome-b':'Projeto B','indice-nome-mais':'Mais em breve',
+      'indice-status':'aguardando conteúdo',
+      'projA-titulo':'Projeto A.','projA-tag1':'identidade visual','projA-tag3':'papelaria',
+      'proj-status-placeholder':'aguardando conteúdo — bloco-modelo',
+      'projA-corpo':'Este é um bloco-modelo. Quando o projeto real chegar, substitua este texto pela descrição: o desafio, a ideia e a solução em 2–3 frases curtas.',
+      'slot-imagem-01-capa':'imagem 01<br>capa — substituir','slot-imagem-01':'imagem 01',
+      'slot-imagem-02':'imagem 02','slot-imagem-03':'imagem 03','slot-imagem-04':'imagem 04',
+      'slot-imagem-05-larga':'imagem 05 — larga',
+      'projB-titulo':'Projeto B.','projB-tag1':'editorial','projB-tag3':'embalagem',
+      'projB-corpo':'Duplique este bloco &lt;section class="pagina"&gt; para cada projeto novo. Troque nome, categorias, texto e imagens — veja o README para o passo a passo.',
+      'em-breve-label':'mais projetos em breve',
+      'em-breve-p':'Assim que os próximos trabalhos forem enviados, eles entram aqui — cada um com seu título, categorias e grade de imagens.',
+      'contato-titulo':'Obrigada.','contato-email-label':'e-mail',
+      'rodape-local':'Goiânia · Goiás · Brasil'
+    },
+    en: {
+      'nav-sobre':'About','nav-trabalhos':'Work','nav-contato':'Contact',
+      'menu-abrir':'Menu','menu-fechar':'Close',
+      'capa-meta-criado-label':'Created and prepared by','capa-meta-design-label':'Graphic Design',
+      'capa-meta-mes':'August 2026','capa-meta-local':'Goiânia, Brazil',
+      'capa-sub':'identity · editorial · illustration — ver. 2026',
+      'capa-rolar':'scroll to see more ↓',
+      'sobre-titulo':'Hello! I\'m<br><em>Laura</em>.',
+      'sobre-p1':'I work from the start: understand the business, find the right words, and only then design. I like projects that show up as a poorly defined problem — that\'s where it gets good.',
+      'sobre-p2':'This site is still under construction. As projects come in, each one gets its own section down in the index.',
+      'form-titulo':'Education','form-corpo':'Graphic Design<br><span class="fraca">Institution · year — year</span>',
+      'hab-titulo':'Skills','hab-corpo':'Visual identity<br>Editorial<br>UI / Digital product',
+      'ferr-titulo':'Tools','ferr-corpo':'Illustrator · Photoshop<br>Figma · InDesign',
+      'indice-titulo':'Contents.','indice-sub':'everything in here',
+      'indice-nome-a':'Project A','indice-nome-b':'Project B','indice-nome-mais':'More soon',
+      'indice-status':'awaiting content',
+      'projA-titulo':'Project A.','projA-tag1':'visual identity','projA-tag3':'stationery',
+      'proj-status-placeholder':'awaiting content — template block',
+      'projA-corpo':'This is a template block. When the real project arrives, replace this text with the description: the challenge, the idea and the solution in 2–3 short sentences.',
+      'slot-imagem-01-capa':'image 01<br>cover — replace','slot-imagem-01':'image 01',
+      'slot-imagem-02':'image 02','slot-imagem-03':'image 03','slot-imagem-04':'image 04',
+      'slot-imagem-05-larga':'image 05 — wide',
+      'projB-titulo':'Project B.','projB-tag1':'editorial','projB-tag3':'packaging',
+      'projB-corpo':'Duplicate this &lt;section class="pagina"&gt; block for each new project. Swap the name, categories, text and images — see the README for the step by step.',
+      'em-breve-label':'more projects soon',
+      'em-breve-p':'As the next projects come in, they\'ll show up here — each with its own title, categories and image grid.',
+      'contato-titulo':'Thank you.','contato-email-label':'email',
+      'rodape-local':'Goiânia · Goiás · Brazil'
+    },
+    es: {
+      'nav-sobre':'Sobre mí','nav-trabalhos':'Trabajos','nav-contato':'Contacto',
+      'menu-abrir':'Menú','menu-fechar':'Cerrar',
+      'capa-meta-criado-label':'Creado y preparado por','capa-meta-design-label':'Diseño Gráfico',
+      'capa-meta-mes':'agosto 2026','capa-meta-local':'Goiânia, Brasil',
+      'capa-sub':'identidad · editorial · ilustración — ver. 2026',
+      'capa-rolar':'desliza para ver más ↓',
+      'sobre-titulo':'¡Hola! Soy<br><em>Laura</em>.',
+      'sobre-p1':'Trabajo desde el principio: entiendo el negocio, encuentro la palabra correcta y solo entonces diseño. Me gustan los proyectos que llegan con un problema mal planteado — ahí es cuando se pone interesante.',
+      'sobre-p2':'Este sitio todavía está en construcción. En cuanto lleguen los proyectos, cada uno tendrá su propia sección aquí abajo, en el índice.',
+      'form-titulo':'Formación','form-corpo':'Diseño Gráfico<br><span class="fraca">Institución · año — año</span>',
+      'hab-titulo':'Habilidades','hab-corpo':'Identidad visual<br>Editorial<br>UI / Producto digital',
+      'ferr-titulo':'Herramientas','ferr-corpo':'Illustrator · Photoshop<br>Figma · InDesign',
+      'indice-titulo':'Contenido.','indice-sub':'todo lo que hay por aquí',
+      'indice-nome-a':'Proyecto A','indice-nome-b':'Proyecto B','indice-nome-mais':'Más pronto',
+      'indice-status':'esperando contenido',
+      'projA-titulo':'Proyecto A.','projA-tag1':'identidad visual','projA-tag3':'papelería',
+      'proj-status-placeholder':'esperando contenido — bloque modelo',
+      'projA-corpo':'Este es un bloque modelo. Cuando llegue el proyecto real, sustituye este texto por la descripción: el desafío, la idea y la solución en 2–3 frases cortas.',
+      'slot-imagem-01-capa':'imagen 01<br>portada — sustituir','slot-imagem-01':'imagen 01',
+      'slot-imagem-02':'imagen 02','slot-imagem-03':'imagen 03','slot-imagem-04':'imagen 04',
+      'slot-imagem-05-larga':'imagen 05 — ancha',
+      'projB-titulo':'Proyecto B.','projB-tag1':'editorial','projB-tag3':'embalaje',
+      'projB-corpo':'Duplica este bloque &lt;section class="pagina"&gt; para cada proyecto nuevo. Cambia el nombre, las categorías, el texto y las imágenes — mira el README para el paso a paso.',
+      'em-breve-label':'más proyectos pronto',
+      'em-breve-p':'En cuanto lleguen los próximos trabajos, aparecerán aquí — cada uno con su título, categorías y grilla de imágenes.',
+      'contato-titulo':'Gracias.','contato-email-label':'correo',
+      'rodape-local':'Goiânia · Goiás · Brasil'
+    }
+  };
+  var HTML_LANG = { pt:'pt-BR', en:'en', es:'es' };
+  var alvosIdioma = document.querySelectorAll('[data-i18n]');
+  var botoesIdioma = document.querySelectorAll('.idiomas button');
+
+  function aplicarIdioma(lang){
+    if(!TR[lang]) lang = 'pt';
+    alvosIdioma.forEach(function(el){
+      var chave = el.dataset.i18n;
+      if(TR[lang][chave] !== undefined) el.innerHTML = TR[lang][chave];
+    });
+    botoesIdioma.forEach(function(b){ b.classList.toggle('ativo', b.dataset.lang === lang); });
+    document.documentElement.lang = HTML_LANG[lang] || 'pt-BR';
+    try{ localStorage.setItem('idioma', lang); }catch(e){}
+  }
+
+  botoesIdioma.forEach(function(b){
+    b.addEventListener('click', function(){ aplicarIdioma(b.dataset.lang); });
+  });
+
+  var idiomaSalvo = 'pt';
+  try{ idiomaSalvo = localStorage.getItem('idioma') || 'pt'; }catch(e){}
+  aplicarIdioma(idiomaSalvo);
 })();
 </script>
 </body>
