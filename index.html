@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laura Reynol — Portfólio</title>
+<meta name="description" content="Laura Reynol — designer gráfica. Identidade visual, editorial e ilustração.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --papel:#F5F3EC;
+  --tinta:#0D0D0D;
+  --escuro:#0B0B0B;
+  --linha:rgba(13,13,13,.18);
+  --acc-a:#CBFF3D; /* limão */
+  --acc-b:#B9A6FF; /* lavanda */
+  --acc-c:#FF5B45; /* coral */
+  --mono:"Space Mono",ui-monospace,"SF Mono",Consolas,monospace;
+  --gutter:clamp(18px,5vw,64px);
+  --maxw:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--papel);color:var(--tinta);
+  font-family:var(--mono);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+::selection{background:var(--tinta);color:var(--papel)}
+:focus-visible{outline:2px dashed var(--tinta);outline-offset:3px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.upper{text-transform:uppercase}
+.tag{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.72}
+
+.rev{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rev.on{opacity:1;transform:none}
+
+/* cursor custom (desktop apenas) */
+.ponto{position:fixed;top:0;left:0;width:16px;height:16px;border-radius:50%;
+  background:var(--tinta);mix-blend-mode:difference;pointer-events:none;z-index:200;
+  transform:translate(-50%,-50%);transition:width .18s ease,height .18s ease;filter:invert(1)}
+.ponto.grande{width:52px;height:52px}
+@media(hover:none),(pointer:coarse){.ponto{display:none}}
+
+/* ============ TOPO ============ */
+.topo{position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px var(--gutter);background:rgba(245,243,236,.88);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--linha)}
+.marca{font-weight:700;letter-spacing:-.02em}
+.topo nav{display:flex;gap:22px}
+.topo nav a{text-decoration:none;text-transform:uppercase;font-size:12px;letter-spacing:.1em;
+  padding-bottom:2px;border-bottom:1px solid transparent}
+.topo nav a:hover{border-bottom-color:var(--tinta)}
+@media(max-width:640px){.topo nav{gap:14px}.topo nav a span{display:none}}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:100px 0 60px;position:relative}
+.hero-topo{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:clamp(24px,7vh,64px)}
+.titulo{font-weight:700;line-height:.86;letter-spacing:-.02em;text-align:center;margin:0}
+.titulo .a{display:block;font-size:clamp(15vw,17vw,190px)}
+.titulo .b{display:block;font-size:clamp(15vw,17vw,190px);background:var(--acc-a);
+  padding:0 .08em;margin-top:.05em;display:inline-block}
+.titulo-wrap{text-align:center}
+.saudacao{text-align:center;margin-top:clamp(20px,4vh,42px);font-size:clamp(16px,3vw,22px);font-weight:700}
+.hero-desc{max-width:56ch;margin:16px auto 0;text-align:center;opacity:.82}
+.hero-rodape{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-top:clamp(40px,9vh,90px)}
+.rolar{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.rolar i{width:44px;height:1px;background:var(--tinta);display:inline-block;animation:puxa 2.2s ease-in-out infinite}
+@keyframes puxa{0%,100%{transform:scaleX(.3)}50%{transform:scaleX(1)}}
+
+/* ============ SOBRE ============ */
+.sobre{padding:clamp(60px,11vh,120px) 0;border-top:1px solid var(--linha)}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,80px);align-items:start}
+@media(max-width:820px){.sobre-grid{grid-template-columns:1fr}}
+.sobre h2{font-size:clamp(28px,4.4vw,44px);line-height:1.08;margin:10px 0 20px;letter-spacing:-.01em}
+.sobre p{margin:0 0 14px;max-width:52ch}
+.foto-box{position:relative;aspect-ratio:4/5;border:1px solid var(--tinta);
+  display:flex;align-items:center;justify-content:center;background:
+  repeating-linear-gradient(135deg,transparent 0 10px,rgba(13,13,13,.06) 10px 11px)}
+.foto-box span{text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:0 20px;line-height:1.8}
+.foto-box .parenteses{position:absolute;font-size:64px;font-weight:700;opacity:.9}
+.foto-box .p-esq{left:8px;top:50%;transform:translateY(-50%)}
+.foto-box .p-dir{right:8px;top:50%;transform:translateY(-50%)}
+
+.tags-skill{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.tags-skill span{border:1px solid var(--tinta);padding:6px 11px;font-size:11px;
+  letter-spacing:.08em;text-transform:uppercase}
+
+/* ============ FAIXA PRETA "( WORK. )" ============ */
+.faixa{background:var(--escuro);color:var(--papel);padding:clamp(50px,12vh,120px) 0;
+  overflow:hidden}
+.faixa h2{margin:0;text-align:center;font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(48px,13vw,150px);line-height:1}
+.faixa .sub{display:block;text-align:center;margin-top:14px;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;opacity:.65}
+
+/* ============ PROJETOS ============ */
+.projetos{padding:clamp(30px,6vh,60px) 0}
+.proj{padding:clamp(56px,10vh,100px) 0;border-top:1px solid var(--linha)}
+.proj-cabeca{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  flex-wrap:wrap;margin-bottom:22px}
+.proj-num{font-size:12px;letter-spacing:.14em}
+.proj-status{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--tinta);padding:4px 10px}
+.proj-tit{font-weight:700;font-size:clamp(34px,7vw,80px);line-height:.94;letter-spacing:-.02em;
+  margin:0 0 6px;display:inline-block;padding:0 .05em}
+.proj-cat{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.65;margin:0 0 26px}
+.proj-desc{max-width:62ch;margin:0 0 30px}
+.proj-desc p{margin:0 0 12px}
+
+.grade-img{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.slot{border:1px solid var(--tinta);aspect-ratio:1;display:flex;align-items:center;
+  justify-content:center;text-align:center;padding:10px;position:relative;overflow:hidden}
+.slot span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;line-height:1.7;opacity:.7}
+.slot::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(13,13,13,.14) 1px,transparent 1.3px);
+  background-size:8px 8px;opacity:.5}
+.s-g6{grid-column:span 6}.s-g4{grid-column:span 4}.s-g3{grid-column:span 3}
+.s-g2{grid-column:span 2}
+@media(max-width:720px){
+  .grade-img{grid-template-columns:repeat(2,1fr)}
+  .s-g6,.s-g4,.s-g3,.s-g2{grid-column:span 2}
+  .slot{aspect-ratio:4/5}
+}
+.slot.acc-a{background:var(--acc-a)}
+.slot.acc-b{background:var(--acc-b)}
+.slot.acc-c{background:var(--acc-c);color:var(--papel)}
+
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.tags span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--tinta);padding:5px 10px}
+
+/* bloco "em breve" */
+.em-breve{padding:clamp(56px,10vh,100px) 0;border-top:1px solid var(--linha);text-align:center}
+.em-breve h3{font-size:clamp(26px,5vw,48px);margin:0 0 10px;letter-spacing:-.01em}
+.em-breve p{max-width:52ch;margin:0 auto;opacity:.75}
+
+/* ============ RODAPÉ / CONTATO ============ */
+.contato{background:var(--escuro);color:var(--papel);padding:clamp(70px,14vh,150px) 0 40px}
+.contato h2{font-weight:700;letter-spacing:-.02em;line-height:.92;margin:0 0 30px;
+  font-size:clamp(44px,10vw,130px);text-align:center}
+.contato h2 .ponto-abre{opacity:.6}
+.links{display:flex;flex-wrap:wrap;gap:clamp(16px,4vw,50px);justify-content:center;
+  border-top:1px solid rgba(245,243,236,.24);border-bottom:1px solid rgba(245,243,236,.24);
+  padding:26px 0;margin:0 0 30px}
+.links a{text-decoration:none;text-align:center}
+.links a .rot{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+.links a .val{display:block;margin-top:6px;font-size:clamp(14px,2vw,18px);font-weight:700;
+  border-bottom:1px solid transparent}
+.links a:hover .val{border-bottom-color:var(--acc-a);color:var(--acc-a)}
+.rodape-fim{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.55}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .rev{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="ponto" id="ponto" aria-hidden="true"></div>
+
+<header class="topo">
+  <span class="marca upper">Laura Reynol</span>
+  <nav aria-label="Seções">
+    <a href="#sobre"><span>(</span>Sobre<span>)</span></a>
+    <a href="#work"><span>(</span>Work<span>)</span></a>
+    <a href="#contato"><span>(</span>Contato<span>)</span></a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Capa">
+  <div class="wrap">
+    <div class="hero-topo tag">
+      <span>Laura Reynol — designer gráfica</span>
+      <span>Goiânia, BR — ver. 2026</span>
+    </div>
+
+    <div class="titulo-wrap">
+      <h1 class="titulo">
+        <span class="a">L ( R . )</span>
+        <span class="b">PORTFOLIO</span>
+      </h1>
+      <p class="saudacao">OI, TUDO BEM?</p>
+      <p class="hero-desc">Eu sou a Laura — projeto marcas, publicações e interfaces com uma cabeça bem direta: primeiro entender o problema, só depois desenhar. Este portfólio ainda está sendo montado — os projetos de verdade chegam em breve.</p>
+    </div>
+
+    <div class="hero-rodape">
+      <span class="tag">Identidade · Editorial · UI</span>
+      <span class="rolar"><i aria-hidden="true"></i> role para ver mais</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="sobre" id="sobre" aria-labelledby="t-sobre">
+  <div class="wrap">
+    <div class="sobre-grid">
+      <div class="rev">
+        <p class="tag" id="t-sobre">( Sobre. )</p>
+        <h2>Design que resolve<br>antes de decorar.</h2>
+        <p>Trabalho do começo: entendo o negócio, encontro a palavra certa e só então desenho. Gosto de projetos que chegam com um problema mal formulado — é aí que a coisa fica boa.</p>
+        <p>Este site está em construção. Assim que os projetos forem enviados, cada um ganha sua própria seção aqui embaixo, no mesmo estilo desta página.</p>
+        <div class="tags-skill" aria-label="Ferramentas">
+          <span>Illustrator</span><span>Photoshop</span><span>Figma</span><span>InDesign</span>
+        </div>
+      </div>
+      <div class="foto-box rev">
+        <span class="parenteses p-esq" aria-hidden="true">(</span>
+        <span>troque por<br>uma foto sua<br>— proporção 4:5 —</span>
+        <span class="parenteses p-dir" aria-hidden="true">)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAIXA WORK ============ -->
+<section class="faixa" id="work" aria-labelledby="t-work">
+  <div class="wrap">
+    <h2 id="t-work">( WORK. )</h2>
+    <span class="sub">projetos selecionados</span>
+  </div>
+</section>
+
+<!-- ============ PROJETOS (modelo / placeholders) ============ -->
+<div class="projetos">
+  <div class="wrap">
+
+    <!-- PROJETO A — modelo de exemplo -->
+    <article class="proj rev" id="projeto-a">
+      <div class="proj-cabeca">
+        <span class="proj-num tag">( 01 )</span>
+        <span class="proj-status">aguardando conteúdo</span>
+      </div>
+      <h3 class="proj-tit">(NOME DO<br>PROJETO.)</h3>
+      <p class="proj-cat">categoria — ex.: identidade visual</p>
+      <div class="proj-desc">
+        <p>Este é um bloco-modelo. Quando o projeto real chegar, substitua este texto pela descrição: o desafio, a ideia e a solução em 2–3 frases curtas.</p>
+      </div>
+      <div class="grade-img" aria-hidden="true">
+        <div class="slot s-g4 acc-a"><span>imagem 01<br>substituir</span></div>
+        <div class="slot s-g2"><span>imagem 02</span></div>
+        <div class="slot s-g2"><span>imagem 03</span></div>
+        <div class="slot s-g2"><span>imagem 04</span></div>
+        <div class="slot s-g6"><span>imagem 05 — capa larga</span></div>
+      </div>
+      <div class="tags"><span>tag 01</span><span>tag 02</span><span>tag 03</span></div>
+    </article>
+
+    <!-- PROJETO B — modelo de exemplo -->
+    <article class="proj rev" id="projeto-b">
+      <div class="proj-cabeca">
+        <span class="proj-num tag">( 02 )</span>
+        <span class="proj-status">aguardando conteúdo</span>
+      </div>
+      <h3 class="proj-tit">(NOME DO<br>PROJETO.)</h3>
+      <p class="proj-cat">categoria — ex.: editorial / embalagem</p>
+      <div class="proj-desc">
+        <p>Duplique este bloco &lt;article class="proj"&gt; para cada projeto novo. Troque título, categoria, texto, imagens e as tags no final.</p>
+      </div>
+      <div class="grade-img" aria-hidden="true">
+        <div class="slot s-g3 acc-b"><span>imagem 01</span></div>
+        <div class="slot s-g3"><span>imagem 02</span></div>
+        <div class="slot s-g3"><span>imagem 03</span></div>
+        <div class="slot s-g3 acc-c"><span>imagem 04</span></div>
+      </div>
+      <div class="tags"><span>tag 01</span><span>tag 02</span></div>
+    </article>
+
+  </div>
+
+  <!-- mais projetos em breve -->
+  <div class="wrap">
+    <div class="em-breve rev">
+      <h3>( MAIS EM BREVE. )</h3>
+      <p>Assim que os próximos projetos forem enviados, eles entram aqui — cada um com seu próprio número, título entre parênteses e grade de imagens.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONTATO ============ -->
+<section class="contato" id="contato" aria-labelledby="t-contato">
+  <div class="wrap">
+    <h2 id="t-contato"><span class="ponto-abre">(</span> . <span class="ponto-abre">)</span><br>THANK YOU.</h2>
+    <div class="links">
+      <a href="mailto:laurareynoldesign@gmail.com"><span class="rot">e-mail</span><span class="val">laurareynoldesign@gmail.com</span></a>
+      <a href="#"><span class="rot">Instagram</span><span class="val">@laurareynol</span></a>
+      <a href="#"><span class="rot">Behance</span><span class="val">behance.net/laurareynol</span></a>
+    </div>
+    <div class="rodape-fim">
+      <span>© 2026 Laura Reynol</span>
+      <span>Goiânia · Goiás · Brasil</span>
+      <span>ver. 2026</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* revelar ao rolar */
+  var alvos = document.querySelectorAll('.rev');
+  if(reduz || !('IntersectionObserver' in window)){
+    alvos.forEach(function(e){e.classList.add('on')});
+  } else {
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('on'); io.unobserve(en.target); }
+      });
+    },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    alvos.forEach(function(e){io.observe(e)});
+  }
+
+  /* cursor customizado (desktop) */
+  if(!reduz && matchMedia('(hover:hover)').matches){
+    var ponto = document.getElementById('ponto');
+    window.addEventListener('mousemove', function(e){
+      ponto.style.left = e.clientX + 'px';
+      ponto.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, .slot').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ ponto.classList.add('grande'); });
+      el.addEventListener('mouseleave', function(){ ponto.classList.remove('grande'); });
+    });
+  }
+})();
+</script>
+</body>
+</html>
