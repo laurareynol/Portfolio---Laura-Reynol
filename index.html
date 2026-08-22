@@ -78,17 +78,17 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 .lateral .rodape-lateral{color:inherit;font-family:var(--mono);font-size:10px;letter-spacing:.12em}
 @media(max-width:959px){.lateral{display:none}}
 
-/* seta "voltar ao topo": desenha e apaga em loop */
-.seta-topo path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:70;stroke-dashoffset:70;animation:desenhaSeta 3.4s ease-in-out infinite}
-@keyframes desenhaSeta{
-  0%{stroke-dashoffset:70}
+/* estrelinha "voltar ao topo": desenha e apaga em loop */
+.estrela-topo path{fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;stroke-linecap:round;
+  stroke-dasharray:120;stroke-dashoffset:120;animation:desenhaEstrela 3.4s ease-in-out infinite}
+@keyframes desenhaEstrela{
+  0%{stroke-dashoffset:120}
   45%{stroke-dashoffset:0}
   75%{stroke-dashoffset:0}
-  100%{stroke-dashoffset:-70}
+  100%{stroke-dashoffset:-120}
 }
 @media (prefers-reduced-motion:reduce){
-  .seta-topo path{stroke-dashoffset:0}
+  .estrela-topo path{stroke-dashoffset:0}
 }
 
 /* ============ SELETOR DE IDIOMA ============ */
@@ -236,8 +236,8 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 <!-- ============ NAV LATERAL (desktop) ============ -->
 <aside class="lateral" aria-label="Navegação principal">
   <a href="#topo" class="topo-btn" aria-label="Voltar ao topo">
-    <svg class="seta-topo" viewBox="0 0 40 44" aria-hidden="true">
-      <path d="M20,40 C15,24 24,10 27,4 M27,4 L19,11 M27,4 L34,13"/>
+    <svg class="estrela-topo" viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M20,2 L24,16 L38,20 L24,24 L20,38 L16,24 L2,20 L16,16 Z"/>
     </svg>
   </a>
   <nav aria-label="Seções">
@@ -256,8 +256,8 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 <!-- ============ NAV MOBILE ============ -->
 <header class="topo-mob">
   <a href="#topo" class="topo-btn" aria-label="Voltar ao topo">
-    <svg class="seta-topo" viewBox="0 0 40 44" aria-hidden="true">
-      <path d="M20,40 C15,24 24,10 27,4 M27,4 L19,11 M27,4 L34,13"/>
+    <svg class="estrela-topo" viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M20,2 L24,16 L38,20 L24,24 L20,38 L16,24 L2,20 L16,16 Z"/>
     </svg>
   </a>
   <button type="button" id="abrir-menu" aria-haspopup="true" aria-controls="menu-mob" data-i18n="menu-abrir">Menu</button>
