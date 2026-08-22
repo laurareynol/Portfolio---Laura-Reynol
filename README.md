@@ -4,7 +4,7 @@ Site estático de página única (`index.html`), sem build/dependências. Basta 
 
 ## Estilo
 
-Seções alternam entre bege claro (`.clara`) e vinho bem escuro (`.escura`) conforme a página é rolada — como no site do Cisne Negro. Títulos grandes (`.carimbo`, ex. `Trabalhos.`) usam a fonte script "Aston Script" e sempre a cor de acento da seção em que estão (vinho escuro nas seções claras, bege nas seções escuras — variável `--acento`, definida por seção). A navegação fica fixa na lateral esquerda (desktop) e, no topo, em telas menores; um `IntersectionObserver` detecta qual seção está no centro da tela e ajusta a cor do menu (vinho ou bege) por CSS puro.
+Seções alternam entre bege claro (`.clara`) e vinho bem escuro (`.escura`) conforme a página é rolada — como no site do Cisne Negro. Títulos grandes (`.carimbo`, ex. `Trabalhos.`) usam a fonte script "Aston Script" e sempre a cor de acento da seção em que estão (vinho escuro nas seções claras, bege nas seções escuras — variável `--acento`, definida por seção). A navegação fica fixa na lateral esquerda (desktop) e no topo em telas menores, com um fundo translúcido de vidro fosco (`backdrop-filter: blur`) — isso garante contraste o tempo todo, mesmo quando duas seções de cores diferentes aparecem ao mesmo tempo atrás do menu (sem isso, uma única cor de texto ficaria ilegível contra uma delas).
 
 O site tem seletor de idioma (PT/EN/ES) no rodapé da navegação. A troca é feita em JavaScript puro: cada texto traduzível tem um atributo `data-i18n="chave"`, e o dicionário com as três versões fica no `<script>` no final do `index.html` (objeto `TR`). A escolha do visitante fica salva no navegador (`localStorage`) e é aplicada de novo na próxima visita.
 
