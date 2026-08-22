@@ -66,8 +66,9 @@ a{color:inherit}
 /* ============ LATERAL (nav fixa, desktop) ============ */
 .lateral{position:fixed;top:0;left:0;height:100vh;width:var(--lateral-w);z-index:100;
   padding:36px 30px;display:flex;flex-direction:column;justify-content:space-between;
-  color:var(--vinho);transition:color .4s ease;pointer-events:none}
-body[data-fundo="escura"] .lateral{color:var(--papel)}
+  color:var(--vinho);background:rgba(238,231,214,.6);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-right:1px solid rgba(107,18,32,.1);pointer-events:none}
 .lateral *{pointer-events:auto}
 .lateral .topo-btn{color:inherit;line-height:1;display:block;width:fit-content}
 .lateral .topo-btn svg{width:38px;height:auto;display:block;overflow:visible}
@@ -103,8 +104,9 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
 @media(max-width:959px){
   .topo-mob{display:flex;position:fixed;top:0;left:0;right:0;z-index:100;
     align-items:center;justify-content:space-between;padding:18px var(--gutter);
-    color:var(--vinho);transition:color .4s ease;pointer-events:none}
-  body[data-fundo="escura"] .topo-mob{color:var(--papel)}
+    color:var(--vinho);background:rgba(238,231,214,.7);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(107,18,32,.1);pointer-events:none}
   .topo-mob *{pointer-events:auto}
   .topo-mob .topo-btn{color:inherit;display:block}
   .topo-mob .topo-btn svg{width:28px;height:auto;display:block;overflow:visible}
@@ -436,19 +438,6 @@ body[data-fundo="escura"] .lateral{color:var(--papel)}
   if(abrir){ abrir.addEventListener('click', function(){ menu.classList.add('on'); }); }
   if(fechar){ fechar.addEventListener('click', fecha); }
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', fecha); });
-
-  /* cor da nav (lateral/topo) segue a seção que está atravessando o centro da tela */
-  var paginas = document.querySelectorAll('.pagina');
-  if('IntersectionObserver' in window && paginas.length){
-    var ioFundo = new IntersectionObserver(function(ents){
-      ents.forEach(function(en){
-        if(en.isIntersecting){
-          document.body.dataset.fundo = en.target.classList.contains('escura') ? 'escura' : 'clara';
-        }
-      });
-    },{rootMargin:'-50% 0px -50% 0px', threshold:0});
-    paginas.forEach(function(p){ ioFundo.observe(p); });
-  }
 
   /* ============ IDIOMA ============ */
   var TR = {
