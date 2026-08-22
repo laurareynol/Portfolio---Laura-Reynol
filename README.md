@@ -4,9 +4,7 @@ Site estático de página única (`index.html`), sem build/dependências. Basta 
 
 ## Estilo
 
-Fundo claro e minimalista, formas orgânicas (blobs, cantos arredondados assimétricos, colagens de imagem sobrepostas) e uma fonte script elegante ("Petit Formal Script") para os títulos grandes, combinada com serifada itálica ("Playfair Display") nos subtítulos e uma sans limpa ("Inter") no corpo do texto. Vinho (`--vinho`) é a única cor de destaque.
-
-> As fontes vêm do Google Fonts — carregam normalmente em qualquer navegador com internet, sem configuração extra.
+Fundo escuro, painéis de "papel" (`.folha`) para texto, títulos grandes em carimbo entre colchetes (`.carimbo`, ex. `[ Work . ]`) na fonte script "Petit Formal Script", e vinho (`--vinho`) como única cor de destaque.
 
 ## Estrutura
 
@@ -15,17 +13,14 @@ Fundo claro e minimalista, formas orgânicas (blobs, cantos arredondados assimé
 
 ## Como adicionar um projeto novo
 
-No `index.html`, cada projeto é um `<article class="proj">`. Duplique o bloco de "Projeto A" (ou "Projeto B") e ajuste:
+No `index.html`, cada projeto é um par de blocos: uma `<section class="faixa">` (título-carimbo + categorias, fundo escuro) seguida de um `<article class="folha">` (texto + grade de imagens, fundo papel). Duplique os dois blocos de "Projeto A" e ajuste:
 
-1. `.proj-cabeca .nome` — nome do projeto.
-2. `.paleta` — 2 a 4 bolinhas de cor (`<i style="background:#...">`) com as cores principais do projeto.
-3. `.proj-meta` — categoria, ano, serviços (separados por `·` automaticamente via CSS).
-4. Remova o `.proj-status` ("aguardando conteúdo") quando o projeto tiver conteúdo real.
-5. `.proj-corpo` — texto sobre o desafio/ideia/solução.
-6. `.colagem` — cada `<div class="peca">` é um espaço de imagem. Troque o conteúdo por uma tag `<img>` real. As classes `p1`/`p2`/`p3`/`p4` controlam tamanho e forma (retângulo orgânico, círculo, cartão levemente rotacionado); `destaque` dá um tom vinho de fundo a uma peça.
-7. Dê um `id` único ao `<article>` (ex. `id="projeto-c"`) e adicione a entrada correspondente na lista `.indice-lista` (seção "Índice").
-
-Se os projetos forem de disciplinas diferentes (ex. identidade visual vs. ilustração), duplique a seção `<section class="categoria">` ("Design Gráfico") antes do grupo de projetos daquela categoria.
+1. `data-txt` e o conteúdo do `<h2 class="carimbo">` — nome do projeto, formato `[ Nome . ]`. Os dois precisam ter o mesmo texto (o `data-txt` gera a sombra vinho atrás do título).
+2. `.proj-meta` — categorias/tags curtas (ex.: identidade visual, 2026, papelaria).
+3. Remova o `.proj-status` ("aguardando conteúdo") quando o projeto tiver conteúdo real.
+4. `.proj-corpo` — texto sobre o desafio/ideia/solução.
+5. `.grade-img` — cada `<div class="slot">` é um espaço de imagem. Troque o conteúdo por uma tag `<img>` real. As classes `s-g2`/`s-g3`/`s-g4`/`s-g6` controlam quantas colunas (de 6) a imagem ocupa; `destaque` dá um leve tom vinho a um slot.
+6. Dê um `id` único ao `<article class="folha">` (ex. `id="projeto-c"`) e adicione a entrada correspondente na lista `.indice-lista`.
 
 ## Como adicionar imagens
 
