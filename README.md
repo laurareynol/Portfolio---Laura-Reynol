@@ -4,7 +4,7 @@ Site estático de página única (`index.html`), sem build/dependências. Basta 
 
 ## Estilo
 
-Seções alternam entre bege claro (`.clara`) e vinho bem escuro (`.escura`) conforme a página é rolada — como no site do Cisne Negro. Títulos grandes entre colchetes (`.carimbo`, ex. `[ Work . ]`) usam a fonte script "Aston Script" e sempre a cor de acento da seção em que estão (vinho escuro nas seções claras, um vinho rosado claro nas seções escuras — variável `--acento`, definida por seção). A navegação fica fixa na lateral esquerda (desktop) usando `mix-blend-mode: difference`, o que faz o texto do menu se adaptar automaticamente à cor de fundo por trás dele, sem JavaScript.
+Seções alternam entre bege claro (`.clara`) e vinho bem escuro (`.escura`) conforme a página é rolada — como no site do Cisne Negro. Títulos grandes (`.carimbo`, ex. `Trabalhos.`) usam a fonte script "Aston Script" e sempre a cor de acento da seção em que estão (vinho escuro nas seções claras, um vinho rosado claro nas seções escuras — variável `--acento`, definida por seção). A navegação fica fixa na lateral esquerda (desktop) usando `mix-blend-mode: difference`, o que faz o texto do menu se adaptar automaticamente à cor de fundo por trás dele, sem JavaScript.
 
 ## Estrutura
 
@@ -18,7 +18,7 @@ Para trocar a fonte dos títulos no futuro, basta substituir os dois arquivos em
 
 No `index.html`, cada projeto é um único `<section class="pagina clara">` ou `<section class="pagina escura">` (alterne a cor em relação ao projeto anterior, pra manter o efeito de mudança de cor). Duplique a seção de "Projeto A" ou "Projeto B" e ajuste:
 
-1. O conteúdo do `<h2 class="carimbo">` — nome do projeto, formato `[ Nome . ]`.
+1. O conteúdo do `<h2 class="carimbo">` — nome do projeto, formato `Nome.`.
 2. `.proj-meta` — categorias/tags curtas (ex.: identidade visual, 2026, papelaria).
 3. Remova o `.proj-status` ("aguardando conteúdo") quando o projeto tiver conteúdo real.
 4. `.proj-corpo` — texto sobre o desafio/ideia/solução.
