@@ -59,21 +59,22 @@ a{color:inherit}
   padding:clamp(60px,11vh,120px) 0}
 .clara{background:var(--papel);color:var(--tinta)}
 .escura{background:var(--escuro);color:var(--creme);
-  --acento:#E3A9AF;--acento-fraco:rgba(227,169,175,.4);--linha:rgba(245,239,227,.18)}
+  --acento:var(--creme);--acento-fraco:rgba(245,239,227,.4);--linha:rgba(245,239,227,.18)}
 
 @media(min-width:960px){ .pagina{padding-left:var(--lateral-w)} }
 
 /* ============ LATERAL (nav fixa, desktop) ============ */
 .lateral{position:fixed;top:0;left:0;height:100vh;width:var(--lateral-w);z-index:100;
   padding:36px 30px;display:flex;flex-direction:column;justify-content:space-between;
-  mix-blend-mode:difference;pointer-events:none}
+  color:var(--vinho);transition:color .4s ease;pointer-events:none}
+body[data-fundo="escura"] .lateral{color:var(--papel)}
 .lateral *{pointer-events:auto}
-.lateral .marca{font-family:var(--display);font-size:30px;color:#fff;line-height:1}
+.lateral .marca{font-family:var(--display);font-size:30px;color:inherit;line-height:1}
 .lateral nav{display:flex;flex-direction:column;gap:20px}
-.lateral nav a{color:#fff;text-decoration:none;font-family:var(--mono);font-size:11px;
+.lateral nav a{color:inherit;text-decoration:none;font-family:var(--mono);font-size:11px;
   letter-spacing:.14em;text-transform:uppercase;display:inline-block;transition:transform .3s ease}
 .lateral nav a:hover{transform:translateX(6px)}
-.lateral .rodape-lateral{color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.12em}
+.lateral .rodape-lateral{color:inherit;font-family:var(--mono);font-size:10px;letter-spacing:.12em}
 @media(max-width:959px){.lateral{display:none}}
 
 /* ============ TOPO (nav mobile) ============ */
@@ -81,10 +82,11 @@ a{color:inherit}
 @media(max-width:959px){
   .topo-mob{display:flex;position:fixed;top:0;left:0;right:0;z-index:100;
     align-items:center;justify-content:space-between;padding:18px var(--gutter);
-    mix-blend-mode:difference;pointer-events:none}
+    color:var(--vinho);transition:color .4s ease;pointer-events:none}
+  body[data-fundo="escura"] .topo-mob{color:var(--papel)}
   .topo-mob *{pointer-events:auto}
-  .topo-mob .marca{font-family:var(--display);font-size:24px;color:#fff}
-  .topo-mob button{background:none;border:0;color:#fff;font-family:var(--mono);
+  .topo-mob .marca{font-family:var(--display);font-size:24px;color:inherit}
+  .topo-mob button{background:none;border:0;color:inherit;font-family:var(--mono);
     font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;padding:6px}
 }
 .menu-mob{position:fixed;inset:0;z-index:200;background:var(--escuro);color:var(--creme);
@@ -394,6 +396,19 @@ a{color:inherit}
   if(abrir){ abrir.addEventListener('click', function(){ menu.classList.add('on'); }); }
   if(fechar){ fechar.addEventListener('click', fecha); }
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', fecha); });
+
+  /* cor da nav (lateral/topo) segue a seção que está atravessando o centro da tela */
+  var paginas = document.querySelectorAll('.pagina');
+  if('IntersectionObserver' in window && paginas.length){
+    var ioFundo = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(en.isIntersecting){
+          document.body.dataset.fundo = en.target.classList.contains('escura') ? 'escura' : 'clara';
+        }
+      });
+    },{rootMargin:'-50% 0px -50% 0px', threshold:0});
+    paginas.forEach(function(p){ ioFundo.observe(p); });
+  }
 })();
 </script>
 </body>
